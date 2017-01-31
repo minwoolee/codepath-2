@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "TWLoginViewController.h"
+#import "TWListViewController.h"
+#import "TWTwitterClient.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//    TWListViewController *viewController = [[TWListViewController alloc] initWithNibName:@"TWListViewController" bundle:nil];
+
+//    TWLoginViewController *viewController = [[TWLoginViewController alloc] initWithNibName:@"TWLoginViewController" bundle:nil];
+
+    TWLoginViewController *viewController = [TWLoginViewController new];
+    
+    CGRect frame = [UIScreen mainScreen].bounds;
+    self.window = [[UIWindow alloc] initWithFrame:frame];
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
@@ -45,6 +60,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+{
+    [[TWTwitterClient sharedInstance] handleApplicationOpenUrl:url];
+    return YES;
 }
 
 

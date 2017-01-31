@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TWListViewController.h
 //  Twtr
 //
 //  Created by Min Lee on 1/30/17.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TWListViewController : UIViewController
 
 @end
-
