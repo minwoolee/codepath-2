@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TWTweet.h"
 
 @interface TWTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) TWTweet *tweet;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TWTableViewCell.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface TWTableViewCell()
 
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topContainerHeightConstraint;
+
 @end
 
 @implementation TWTableViewCell
@@ -26,11 +29,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
-    self.nameLabel.text = @"Min Woo Lee";
-    self.handleLabel.text = @"@minwoolee@minwoolee@minwoolee@minwoolee@minwoolee@minwoolee@minwoolee";
-    self.timestampLabel.text = @"4h";
-    self.contentLabel.text = @"Hi";
+}
+
+- (void)setTweet:(TWTweet *)tweet;
+{
+    _tweet = tweet;
+
+    self.nameLabel.text = tweet.user.name;
+    self.handleLabel.text = [NSString stringWithFormat: @"@%@", tweet.user.screenName];
+    self.timestampLabel.text = [NSDateFormatter localizedStringFromDate:tweet.createdAt
+                                                              dateStyle:NSDateFormatterShortStyle
+                                                              timeStyle:NSDateFormatterShortStyle];
+    self.contentLabel.text = tweet.text;
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrlString]];
+    if (tweet.retweetCount == nil || [tweet.retweetCount intValue] == 0) {
+        self.topContainerHeightConstraint.constant = 0;
+        [self setNeedsUpdateConstraints];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

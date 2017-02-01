@@ -26,6 +26,8 @@ static NSString *const kScreenNameKey = @"screen_name";
 static NSString *const kProfileImageUrlKey = @"profile_image_url";
 static NSString *const kTaglineKey = @"description";
 
+static NSString *const kCurrentUserKey = @"currentUser";
+
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 {
     self = [super init];
@@ -37,6 +39,33 @@ static NSString *const kTaglineKey = @"description";
         self.tagline = dictionary[kTaglineKey];
     }
     return self;
+}
+
++ (TWUser *)getCurrentUser;
+{
+    TWUser *currentUser = nil;
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentUserKey];
+    NSDictionary *dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    if (dictionary) {
+        currentUser = [[TWUser alloc] initWithDictionary:dictionary];
+        NSLog(@"Current user: %@", currentUser);
+    } else {
+        NSLog(@"No current user set");
+    }
+    return currentUser;
+}
+
++ (void)setCurrentUser:(TWUser *)user;
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (user == nil) {
+        [userDefaults removeObjectForKey:kCurrentUserKey];
+    } else {
+        NSDictionary *dictionary = user.dictionary;
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dictionary];
+        [userDefaults setObject:data forKey:kCurrentUserKey];
+    }
+    [userDefaults synchronize];
 }
 
 - (NSString *)description;

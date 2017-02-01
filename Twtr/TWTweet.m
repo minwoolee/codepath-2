@@ -15,6 +15,7 @@
 @property (nonatomic, strong, readwrite) NSString *text;
 @property (nonatomic, strong, readwrite) TWUser *user;
 @property (nonatomic, strong, readwrite) NSDate *createdAt;
+@property (nonatomic, strong, readwrite) NSNumber *retweetCount;
 
 @end
 
@@ -23,6 +24,7 @@
 static NSString *const kTextKey = @"text";
 static NSString *const kUserKey = @"user";
 static NSString *const kCreateAtKey = @"created_at";
+static NSString *const kRetweetCountKey = @"retweet_count";
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 {
@@ -32,13 +34,14 @@ static NSString *const kCreateAtKey = @"created_at";
         self.text = dictionary[kTextKey];
         self.user = [[TWUser alloc] initWithDictionary:dictionary[kUserKey]];
         NSDateFormatter *formatter = [NSDateFormatter new];
-        [formatter dateFromString:@"EEE MMM d HH:mm:ss Z y"];
+        formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         self.createdAt = [formatter dateFromString:dictionary[kCreateAtKey]];
+        self.retweetCount = dictionary[kRetweetCountKey];
     }
     return self;
 }
 
-+ (NSArray<TWUser*> *)tweetsWithArray:(NSArray<NSDictionary *> *)array;
++ (NSArray<TWTweet*> *)tweetsWithArray:(NSArray<NSDictionary *> *)array;
 {
     NSMutableArray *tweets = [NSMutableArray array];
     for (NSDictionary *dictionary in array) {

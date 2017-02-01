@@ -19,9 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etg-wH-6Qm">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etg-wH-6Qm">
                     <rect key="frame" x="126" y="318" width="122" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Login with Twitter"/>
                     <connections>
                         <action selector="loginButtonPressed:" destination="-1" eventType="touchUpInside" id="ylc-ec-0Ck"/>
@@ -29,6 +28,10 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="etg-wH-6Qm" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="8zB-Rd-S01"/>
+                <constraint firstItem="etg-wH-6Qm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oVh-bl-gJ0"/>
+            </constraints>
         </view>
     </objects>
 </document>

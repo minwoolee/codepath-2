@@ -7,6 +7,7 @@ target 'Twtr' do
 
   # Pods for Twtr
   pod 'BDBOAuth1Manager'
+  pod 'AFNetworking'
 
   target 'TwtrTests' do
     inherit! :search_paths

@@ -15,6 +15,11 @@
 @property (nonatomic, strong, readonly) NSString *profileImageUrlString;
 @property (nonatomic, strong, readonly) NSString *tagline;
 
--(id)initWithDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, strong) TWUser *currentUser;
+
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+
++ (TWUser *)getCurrentUser;
++ (void)setCurrentUser:(TWUser *)user;
 
 @end

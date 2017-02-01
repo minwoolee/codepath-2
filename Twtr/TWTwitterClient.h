@@ -8,6 +8,7 @@
 
 #import <BDBOAuth1Manager/BDBOAuth1SessionManager.h>
 #import "TWUser.h"
+#import "TWTweet.h"
 
 @interface TWTwitterClient : BDBOAuth1SessionManager
 
@@ -15,6 +16,10 @@
 
 - (void)loginWithCompletion:(void (^)(TWUser *user, NSError *error))completion;
 
+- (void)signOut;
+
 - (void)handleApplicationOpenUrl:(NSURL*)url;
+
+- (void)timelineWithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
 
 @end

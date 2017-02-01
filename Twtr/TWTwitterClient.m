@@ -57,6 +57,11 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
+- (void)signOut;
+{
+    [TWUser setCurrentUser:nil];
+}
+
 - (void)handleApplicationOpenUrl:(NSURL *)url;
 {
     [self fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:[BDBOAuth1Credential credentialWithQueryString:url.query] success:^(BDBOAuth1Credential *accessToken) {
@@ -65,7 +70,7 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
         [self.requestSerializer saveAccessToken:accessToken];
 
         [self GET:@"1.1/account/verify_credentials.json" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-            // something
+            // show progress
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             TWUser *currentUser = [[TWUser alloc] initWithDictionary:responseObject];
             if (self.loginCompletion) {
@@ -85,5 +90,16 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
+- (void)timelineWithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
+{
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        // show progress
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion([TWTweet tweetsWithArray:responseObject], nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"timelineWithCompletion failed with error: %@", error);
+        completion(nil, error);
+    }];
+}
 
 @end

@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import "TWLoginViewController.h"
-#import "TWListViewController.h"
+#import "TWNavigationController.h"
 #import "TWTwitterClient.h"
+#import "TWUser.h"
 
 @interface AppDelegate ()
 
@@ -25,13 +26,14 @@
 
 //    TWLoginViewController *viewController = [[TWLoginViewController alloc] initWithNibName:@"TWLoginViewController" bundle:nil];
 
-    TWLoginViewController *viewController = [TWLoginViewController new];
+    TWUser *currentUser = [TWUser getCurrentUser];
+    UIViewController *rootViewController = (currentUser)? [TWNavigationController new] : [TWLoginViewController new];
     
     CGRect frame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:frame];
-    self.window.rootViewController = viewController;
+    self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];
-
+    
     return YES;
 }
 
@@ -64,9 +66,9 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 {
+    // TODO: check URL to see if it's oauth URL
     [[TWTwitterClient sharedInstance] handleApplicationOpenUrl:url];
     return YES;
 }
-
 
 @end

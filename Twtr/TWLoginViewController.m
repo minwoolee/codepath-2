@@ -8,6 +8,7 @@
 
 #import "TWLoginViewController.h"
 #import "TWTwitterClient.h"
+#import "TWNavigationController.h"
 
 @interface TWLoginViewController ()
 
@@ -33,6 +34,12 @@
         } else {
             // do main app stuff
             NSLog(@"User: %@", user);
+            [TWUser setCurrentUser:user];
+            
+            TWNavigationController *twNavigationController = [TWNavigationController new];
+            [self presentViewController:twNavigationController animated:YES completion:^{
+                // TODO: anything?
+            }];
         }
     }];
 }

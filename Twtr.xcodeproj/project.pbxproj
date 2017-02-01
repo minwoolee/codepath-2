@@ -24,6 +24,9 @@
 		A092E6F31E3FF3D3008D43DB /* TWTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A092E6F21E3FF3D3008D43DB /* TWTwitterClient.m */; };
 		A0C651BA1E40068E00679C97 /* TWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C651B91E40068E00679C97 /* TWUser.m */; };
 		A0C651BD1E4006A200679C97 /* TWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C651BC1E4006A200679C97 /* TWTweet.m */; };
+		A0CD53A71E415A6500B19507 /* TWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53A61E415A6400B19507 /* TWNavigationController.m */; };
+		A0CD53AB1E41669700B19507 /* TWComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53A91E41669700B19507 /* TWComposeViewController.m */; };
+		A0CD53AC1E41669700B19507 /* TWComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */; };
 		C5CC71F96751EC7F572E7E9E /* libPods-TwtrUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E6C1B4242AA7AF306D382B /* libPods-TwtrUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,11 @@
 		A0C651B91E40068E00679C97 /* TWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWUser.m; path = Twtr/TWUser.m; sourceTree = "<group>"; };
 		A0C651BB1E4006A200679C97 /* TWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWTweet.h; path = Twtr/TWTweet.h; sourceTree = "<group>"; };
 		A0C651BC1E4006A200679C97 /* TWTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWTweet.m; path = Twtr/TWTweet.m; sourceTree = "<group>"; };
+		A0CD53A51E415A6400B19507 /* TWNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWNavigationController.h; path = Twtr/TWNavigationController.h; sourceTree = "<group>"; };
+		A0CD53A61E415A6400B19507 /* TWNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWNavigationController.m; path = Twtr/TWNavigationController.m; sourceTree = "<group>"; };
+		A0CD53A81E41669700B19507 /* TWComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWComposeViewController.h; sourceTree = "<group>"; };
+		A0CD53A91E41669700B19507 /* TWComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWComposeViewController.m; sourceTree = "<group>"; };
+		A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWComposeViewController.xib; sourceTree = "<group>"; };
 		CDC1B33C427D3F1352111B58 /* libPods-TwtrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwtrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED57599418A51A0DF4CBB67 /* Pods-TwtrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwtrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwtrUITests/Pods-TwtrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA6EAF0DE776A9015A60F6DF /* libPods-Twtr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twtr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,9 +137,6 @@
 		A092E69E1E3FBE22008D43DB = {
 			isa = PBXGroup;
 			children = (
-				A0C651BE1E4006AC00679C97 /* Model */,
-				A0C651C01E40661700679C97 /* View */,
-				A0C651BF1E40660800679C97 /* Controller */,
 				A092E6A91E3FBE22008D43DB /* Twtr */,
 				A092E6C31E3FBE22008D43DB /* TwtrTests */,
 				A092E6CE1E3FBE22008D43DB /* TwtrUITests */,
@@ -154,6 +159,9 @@
 		A092E6A91E3FBE22008D43DB /* Twtr */ = {
 			isa = PBXGroup;
 			children = (
+				A0C651BE1E4006AC00679C97 /* Model */,
+				A0C651C01E40661700679C97 /* View */,
+				A0C651BF1E40660800679C97 /* Controller */,
 				A0C651B71E40064300679C97 /* Twtr.entitlements */,
 				A092E6AD1E3FBE22008D43DB /* AppDelegate.h */,
 				A092E6AE1E3FBE22008D43DB /* AppDelegate.m */,
@@ -202,6 +210,7 @@
 				A092E6F21E3FF3D3008D43DB /* TWTwitterClient.m */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A0C651BF1E40660800679C97 /* Controller */ = {
@@ -213,8 +222,14 @@
 				A092E6EC1E3FF264008D43DB /* TWLoginViewController.h */,
 				A092E6ED1E3FF264008D43DB /* TWLoginViewController.m */,
 				A092E6EE1E3FF264008D43DB /* TWLoginViewController.xib */,
+				A0CD53A51E415A6400B19507 /* TWNavigationController.h */,
+				A0CD53A61E415A6400B19507 /* TWNavigationController.m */,
+				A0CD53A81E41669700B19507 /* TWComposeViewController.h */,
+				A0CD53A91E41669700B19507 /* TWComposeViewController.m */,
+				A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */,
 			);
 			name = Controller;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A0C651C01E40661700679C97 /* View */ = {
@@ -225,6 +240,7 @@
 				A092E6E91E3FC821008D43DB /* TWTableViewCell.xib */,
 			);
 			name = View;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E96610FDC0C0BAD6CD62BF70 /* Frameworks */ = {
@@ -364,6 +380,7 @@
 				A092E6F01E3FF264008D43DB /* TWLoginViewController.xib in Resources */,
 				A092E6E61E3FC3CC008D43DB /* TWListViewController.xib in Resources */,
 				A092E6EB1E3FC821008D43DB /* TWTableViewCell.xib in Resources */,
+				A0CD53AC1E41669700B19507 /* TWComposeViewController.xib in Resources */,
 				A092E6B71E3FBE22008D43DB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,11 +544,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0CD53A71E415A6500B19507 /* TWNavigationController.m in Sources */,
 				A0C651BD1E4006A200679C97 /* TWTweet.m in Sources */,
 				A092E6EF1E3FF264008D43DB /* TWLoginViewController.m in Sources */,
 				A092E6AF1E3FBE22008D43DB /* AppDelegate.m in Sources */,
 				A092E6E51E3FC3CC008D43DB /* TWListViewController.m in Sources */,
 				A092E6EA1E3FC821008D43DB /* TWTableViewCell.m in Sources */,
+				A0CD53AB1E41669700B19507 /* TWComposeViewController.m in Sources */,
 				A092E6AC1E3FBE22008D43DB /* main.m in Sources */,
 				A0C651BA1E40068E00679C97 /* TWUser.m in Sources */,
 				A092E6F31E3FF3D3008D43DB /* TWTwitterClient.m in Sources */,
