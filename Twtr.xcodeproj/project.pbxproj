@@ -29,6 +29,7 @@
 		A0CD53AC1E41669700B19507 /* TWComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */; };
 		A0CD53EF1E428B5100B19507 /* TWDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53ED1E428B5100B19507 /* TWDetailViewController.m */; };
 		A0CD53F01E428B5100B19507 /* TWDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0CD53EE1E428B5100B19507 /* TWDetailViewController.xib */; };
+		A0CD53F31E42B1CC00B19507 /* TWNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53F21E42B1CC00B19507 /* TWNavigationManager.m */; };
 		C5CC71F96751EC7F572E7E9E /* libPods-TwtrUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E6C1B4242AA7AF306D382B /* libPods-TwtrUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,8 @@
 		A0CD53EC1E428B5100B19507 /* TWDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWDetailViewController.h; path = Twtr/TWDetailViewController.h; sourceTree = "<group>"; };
 		A0CD53ED1E428B5100B19507 /* TWDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWDetailViewController.m; path = Twtr/TWDetailViewController.m; sourceTree = "<group>"; };
 		A0CD53EE1E428B5100B19507 /* TWDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWDetailViewController.xib; path = Twtr/TWDetailViewController.xib; sourceTree = "<group>"; };
+		A0CD53F11E42B1CC00B19507 /* TWNavigationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWNavigationManager.h; sourceTree = "<group>"; };
+		A0CD53F21E42B1CC00B19507 /* TWNavigationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWNavigationManager.m; sourceTree = "<group>"; };
 		CDC1B33C427D3F1352111B58 /* libPods-TwtrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwtrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED57599418A51A0DF4CBB67 /* Pods-TwtrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwtrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwtrUITests/Pods-TwtrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA6EAF0DE776A9015A60F6DF /* libPods-Twtr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twtr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +173,8 @@
 				A0C651B71E40064300679C97 /* Twtr.entitlements */,
 				A092E6AD1E3FBE22008D43DB /* AppDelegate.h */,
 				A092E6AE1E3FBE22008D43DB /* AppDelegate.m */,
+				A0CD53F11E42B1CC00B19507 /* TWNavigationManager.h */,
+				A0CD53F21E42B1CC00B19507 /* TWNavigationManager.m */,
 				A092E6B61E3FBE22008D43DB /* Assets.xcassets */,
 				A092E6B81E3FBE22008D43DB /* LaunchScreen.storyboard */,
 				A092E6BB1E3FBE22008D43DB /* Info.plist */,
@@ -555,6 +560,7 @@
 			files = (
 				A0CD53A71E415A6500B19507 /* TWNavigationController.m in Sources */,
 				A0C651BD1E4006A200679C97 /* TWTweet.m in Sources */,
+				A0CD53F31E42B1CC00B19507 /* TWNavigationManager.m in Sources */,
 				A092E6EF1E3FF264008D43DB /* TWLoginViewController.m in Sources */,
 				A092E6AF1E3FBE22008D43DB /* AppDelegate.m in Sources */,
 				A0CD53EF1E428B5100B19507 /* TWDetailViewController.m in Sources */,

@@ -14,9 +14,9 @@ The following **required** functionality is completed:
 - [x] User can pull to refresh.
 - [ ] User can compose a new tweet by tapping on a compose button.
 - [ ] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
-- [ ] Hamburger menu
-   - [ ] Dragging anywhere in the view should reveal the menu.
-   - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
+- [ ] Tab Bar
+   - [ ] Use a `UITabBarController`
+   - [ ] The tab bar should include links to your profile, the home timeline, and the mentions view.
 - [ ] Profile page
    - [ ] Contains the user header view (implemented as a custom view)
    - [ ] Contains a section with the users basic stats: # tweets, # following, # followers

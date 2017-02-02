@@ -11,6 +11,7 @@
 #import "TWNavigationController.h"
 #import "TWTwitterClient.h"
 #import "TWUser.h"
+#import "TWNavigationManager.h"
 
 @interface AppDelegate ()
 
@@ -22,17 +23,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    TWListViewController *viewController = [[TWListViewController alloc] initWithNibName:@"TWListViewController" bundle:nil];
-
-//    TWLoginViewController *viewController = [[TWLoginViewController alloc] initWithNibName:@"TWLoginViewController" bundle:nil];
-
     TWUser *currentUser = [TWUser getCurrentUser];
-    UIViewController *rootViewController = (currentUser)? [TWNavigationController new] : [TWLoginViewController new];
-    
     CGRect frame = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:frame];
-    self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];
+    [TWNavigationManager sharedInstance].window = self.window;
+    [[TWNavigationManager sharedInstance] setRootViewController];
     
     return YES;
 }

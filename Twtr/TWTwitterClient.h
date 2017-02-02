@@ -16,8 +16,6 @@
 
 - (void)loginWithCompletion:(void (^)(TWUser *user, NSError *error))completion;
 
-- (void)signOut;
-
 - (void)handleApplicationOpenUrl:(NSURL*)url;
 
 - (void)timelineWithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;

@@ -13,6 +13,7 @@
 #import "TWLoginViewController.h"
 #import "TWComposeViewController.h"
 #import "TWDetailViewController.h"
+#import "TWNavigationManager.h"
 
 @interface TWListViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -113,7 +114,7 @@
                                                                      preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * action) {
-                                                         [[TWTwitterClient sharedInstance] signOut];
+                                                         [[TWNavigationManager sharedInstance] logOut];
                                                          [self presentViewController:[TWLoginViewController new] animated:YES completion:^{
                                                              //
                                                          }];

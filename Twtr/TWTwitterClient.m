@@ -57,11 +57,6 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
-- (void)signOut;
-{
-    [TWUser setCurrentUser:nil];
-}
-
 - (void)handleApplicationOpenUrl:(NSURL *)url;
 {
     [self fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:[BDBOAuth1Credential credentialWithQueryString:url.query] success:^(BDBOAuth1Credential *accessToken) {
