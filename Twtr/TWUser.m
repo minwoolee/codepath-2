@@ -16,6 +16,9 @@
 @property (nonatomic, strong, readwrite) NSString *screenName;
 @property (nonatomic, strong, readwrite) NSString *profileImageUrlString;
 @property (nonatomic, strong, readwrite) NSString *tagline;
+@property (nonatomic, strong, readwrite) NSNumber *tweetCount;
+@property (nonatomic, strong, readwrite) NSNumber *followingCount;
+@property (nonatomic, strong, readwrite) NSNumber *followersCount;
 
 @end
 
@@ -25,6 +28,9 @@ static NSString *const kNameKey = @"name";
 static NSString *const kScreenNameKey = @"screen_name";
 static NSString *const kProfileImageUrlKey = @"profile_image_url";
 static NSString *const kTaglineKey = @"description";
+static NSString *const kTweetsCountKey = @"statuses_count";
+static NSString *const kFollowingCountKey = @"following";
+static NSString *const kFollowersCountKey = @"followers_count";
 
 static NSString *const kCurrentUserKey = @"currentUser";
 
@@ -37,6 +43,9 @@ static NSString *const kCurrentUserKey = @"currentUser";
         self.screenName = dictionary[kScreenNameKey];
         self.profileImageUrlString = dictionary[kProfileImageUrlKey];
         self.tagline = dictionary[kTaglineKey];
+        self.tweetCount = dictionary[kTweetsCountKey];
+        self.followersCount = dictionary[kFollowersCountKey];
+        self.followingCount = dictionary[kFollowingCountKey];
     }
     return self;
 }

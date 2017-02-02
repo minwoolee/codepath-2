@@ -32,7 +32,7 @@
     if (currentUser) {
         [self.profileImageView setImageWithURL:[NSURL URLWithString:currentUser.profileImageUrlString]];
         self.nameLabel.text = currentUser.name;
-        self.handleLabel.text = currentUser.screenName;
+        self.handleLabel.text = [@"@" stringByAppendingString:currentUser.screenName];
     }
 
     self.tweetTextView.delegate = self;

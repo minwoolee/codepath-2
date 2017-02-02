@@ -18,7 +18,7 @@
 
 - (void)handleApplicationOpenUrl:(NSURL*)url;
 
-- (void)timelineWithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
+- (void)timelineApi:(NSString *)api WithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
 
 - (void)statusForId:(NSString *)statusId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
 

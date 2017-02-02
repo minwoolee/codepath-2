@@ -85,9 +85,9 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
-- (void)timelineWithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
+- (void)timelineApi:(NSString *)api WithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
 {
-    [self GET:@"1.1/statuses/home_timeline.json" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [self GET:api parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         // show progress
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completion([TWTweet tweetsWithArray:responseObject], nil);

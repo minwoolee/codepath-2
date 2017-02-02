@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "TWLoginViewController.h"
-#import "TWNavigationController.h"
 #import "TWTwitterClient.h"
 #import "TWUser.h"
 #import "TWNavigationManager.h"

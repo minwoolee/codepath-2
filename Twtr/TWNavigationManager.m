@@ -10,6 +10,7 @@
 #import "TWLoginViewController.h"
 #import "TWTwitterClient.h"
 #import "TWListViewController.h"
+#import "TWProfileViewController.h"
 
 @interface TWNavigationManager()
 
@@ -64,14 +65,25 @@
 - (UIViewController *)loggedInRootViewController;
 {
     UINavigationController *tab1VC = [UINavigationController new];
-    [tab1VC pushViewController:[TWListViewController new] animated:YES];
+    TWListViewController *timelineViewController = [TWListViewController new];
+    timelineViewController.api = @"1.1/statuses/home_timeline.json";
+    [tab1VC pushViewController:timelineViewController animated:YES];
     tab1VC.tabBarItem.title = @"Timeline";
+    tab1VC.tabBarItem.image = [UIImage imageNamed:@"home-icon"];
+
     UINavigationController *tab2VC = [UINavigationController new];
-    [tab2VC pushViewController:[TWListViewController new] animated:YES];
+    TWListViewController *mentionsViewController = [TWListViewController new];
+    mentionsViewController.api = @"1.1/statuses/mentions_timeline.json";
+    [tab2VC pushViewController:mentionsViewController animated:YES];
     tab2VC.tabBarItem.title = @"Mentions";
+    tab2VC.tabBarItem.image = [UIImage imageNamed:@"stat-icon"];
+
     UINavigationController *tab3VC = [UINavigationController new];
-    [tab3VC pushViewController:[TWListViewController new] animated:YES];
+    TWProfileViewController *twProfileViewController = [TWProfileViewController new];
+    twProfileViewController.user = TWUser.currentUser;
+    [tab3VC pushViewController:twProfileViewController animated:YES];
     tab3VC.tabBarItem.title = @"Profile";
+    tab3VC.tabBarItem.image = [UIImage imageNamed:@"profile-icon"];
 
     // Set up the Tab Bar Controller to have two tabsr
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
@@ -83,6 +95,13 @@
 - (UIViewController *)loggedOutRootViewController;
 {
     return [TWLoginViewController new];
+}
+
+- (UIViewController *)tweetsListViewControllerFor:(TWUser *)user;
+{
+    TWListViewController *tweetsViewController = [TWListViewController new];
+    tweetsViewController.api = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?screen_name=%@", user.screenName];
+    return tweetsViewController;
 }
 
 @end

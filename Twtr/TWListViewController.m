@@ -36,18 +36,22 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     // configure navigation bar
-    self.navigationItem.title = @"Home";
-    UIBarButtonItem *newButton = [UIBarButtonItem new];
-    newButton.target = self;
-    newButton.action = @selector(handleCompose:);
-    newButton.title = @"New";
-    self.navigationItem.rightBarButtonItem = newButton;
-
-    UIBarButtonItem *signOutButton = [UIBarButtonItem new];
-    signOutButton.target = self;
-    signOutButton.action = @selector(handleSignOut:);
-    signOutButton.title = @"Sign Out";
-    self.navigationItem.leftBarButtonItem = signOutButton;
+    NSString *tabBarTitle = self.navigationController.tabBarItem.title;
+    self.navigationItem.title = tabBarTitle;
+    
+    if ([tabBarTitle isEqualToString:@"Timeline"]) {
+        UIBarButtonItem *newButton = [UIBarButtonItem new];
+        newButton.target = self;
+        newButton.action = @selector(handleCompose:);
+        newButton.title = @"New";
+        self.navigationItem.rightBarButtonItem = newButton;
+        
+        UIBarButtonItem *signOutButton = [UIBarButtonItem new];
+        signOutButton.target = self;
+        signOutButton.action = @selector(handleSignOut:);
+        signOutButton.title = @"Sign Out";
+        self.navigationItem.leftBarButtonItem = signOutButton;
+    }
     
     UINib *cellNib = [UINib nibWithNibName:@"TWTableViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"TWTableViewCell"];
@@ -96,7 +100,7 @@
 
 - (void)loadTweets;
 {
-    [[TWTwitterClient sharedInstance] timelineWithCompletion:^(NSArray<TWTweet *> *tweets, NSError *error) {
+    [[TWTwitterClient sharedInstance] timelineApi:self.api WithCompletion:^(NSArray<TWTweet *> *tweets, NSError *error) {
         self.tweets = tweets;
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];

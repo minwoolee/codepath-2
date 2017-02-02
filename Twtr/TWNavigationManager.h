@@ -19,6 +19,8 @@
 
 - (void)setRootViewController;
 
+- (UIViewController *)tweetsListViewControllerFor:(TWUser *)user;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @end

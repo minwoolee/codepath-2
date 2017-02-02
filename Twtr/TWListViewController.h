@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TWTweet.h"
 
 @interface TWListViewController : UIViewController
+
+@property (strong, nonatomic) NSString *api;
 
 @end
