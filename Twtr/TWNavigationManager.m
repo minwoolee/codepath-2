@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        self.isLoggedIn = NO;
+        self.isLoggedIn = [TWUser getCurrentUser] != nil;
     }
     return self;
 }

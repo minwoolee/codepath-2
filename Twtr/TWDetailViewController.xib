@@ -22,6 +22,7 @@
                 <outlet property="profileImageView" destination="fXe-Af-fT5" id="JTi-qu-N0N"/>
                 <outlet property="replyButton" destination="bFS-AD-zNh" id="FWk-iV-DHd"/>
                 <outlet property="retweetButton" destination="3x7-NY-jnx" id="7Fv-EF-2zb"/>
+                <outlet property="retweetedByLabel" destination="mzG-Av-JY6" id="1aL-kQ-BWG"/>
                 <outlet property="rtCountLabel" destination="M31-M1-i5E" id="wBo-Cr-Ksm"/>
                 <outlet property="topContainerHeightConstraint" destination="aJJ-Ss-sbp" id="NZ1-YC-HTS"/>
                 <outlet property="topContainerView" destination="hRS-NI-hvc" id="00i-u2-wp3"/>
@@ -34,14 +35,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fXe-Af-fT5">
-                    <rect key="frame" x="20" y="28" width="44" height="44"/>
+                    <rect key="frame" x="20" y="33" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="RZf-bR-iak"/>
                         <constraint firstAttribute="height" constant="44" id="czd-3j-Qvc"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN2-RK-6qs" userLabel="Name">
-                    <rect key="frame" x="72" y="28" width="40" height="20"/>
+                    <rect key="frame" x="72" y="33" width="40" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Own-tx-bn2"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="jlY-PO-bpp"/>
@@ -51,7 +52,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZv-Sg-J7w" userLabel="Handle">
-                    <rect key="frame" x="72" y="52" width="44.5" height="20"/>
+                    <rect key="frame" x="72" y="57" width="44.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="hI0-Ug-tpo"/>
                     </constraints>
@@ -60,7 +61,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NB4-bc-0vr">
-                    <rect key="frame" x="20" y="104" width="70" height="14.5"/>
+                    <rect key="frame" x="20" y="109" width="70" height="14.5"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="eCV-7t-58D"/>
                     </constraints>
@@ -69,7 +70,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfg-B1-u93">
-                    <rect key="frame" x="20" y="126.5" width="335" height="45"/>
+                    <rect key="frame" x="20" y="131.5" width="335" height="45"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M31-M1-i5E" userLabel="RT_count">
                             <rect key="frame" x="20" y="16" width="9" height="14.5"/>
@@ -121,7 +122,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rX0-Vu-i15">
-                    <rect key="frame" x="20" y="179.5" width="335" height="45"/>
+                    <rect key="frame" x="20" y="184.5" width="335" height="45"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cPc-jm-EbF">
                             <rect key="frame" x="20" y="0.0" width="295" height="45"/>
@@ -149,7 +150,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet content" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liS-C0-wXb">
-                    <rect key="frame" x="20" y="80" width="335" height="16"/>
+                    <rect key="frame" x="20" y="85" width="335" height="16"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -196,7 +197,7 @@
                 <constraint firstItem="rX0-Vu-i15" firstAttribute="height" secondItem="rfg-B1-u93" secondAttribute="height" id="1W1-Al-l9o"/>
                 <constraint firstAttribute="trailing" secondItem="rfg-B1-u93" secondAttribute="trailing" constant="20" symbolic="YES" id="3ch-vV-0YR"/>
                 <constraint firstItem="rfg-B1-u93" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="8Om-0a-uTO"/>
-                <constraint firstItem="XN2-RK-6qs" firstAttribute="top" secondItem="hRS-NI-hvc" secondAttribute="bottom" constant="3" id="EA4-eF-zwE"/>
+                <constraint firstItem="XN2-RK-6qs" firstAttribute="top" secondItem="hRS-NI-hvc" secondAttribute="bottom" constant="8" symbolic="YES" id="EA4-eF-zwE"/>
                 <constraint firstItem="hRS-NI-hvc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HRq-km-sNE"/>
                 <constraint firstItem="XN2-RK-6qs" firstAttribute="top" secondItem="fXe-Af-fT5" secondAttribute="top" id="JFo-z3-10N"/>
                 <constraint firstItem="fXe-Af-fT5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="Uu2-br-anW"/>

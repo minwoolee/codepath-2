@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rtCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *favCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *retweetedByLabel;
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
@@ -52,9 +53,11 @@
     TWUser *user = tweet.user;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:user.profileImageUrlString]];
     self.nameLabel.text = user.name;
-    self.handleLabel.text = user.screenName;
+    self.handleLabel.text = [@"@" stringByAppendingString:user.screenName];
     
-    if (tweet.retweetCount == nil || [tweet.retweetCount intValue] == 0) {
+    if (tweet.retweetedBy) {
+        self.retweetedByLabel.text = tweet.retweetedBy;
+    } else {
         self.topContainerView.hidden = YES;
         self.topContainerHeightConstraint.constant = 0;
         [self.view setNeedsUpdateConstraints];

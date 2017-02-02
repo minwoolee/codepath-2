@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong, readonly) NSString *id;
 @property (nonatomic, strong, readonly) NSString *text;
+@property (nonatomic, strong, readonly) NSString *retweetedBy;
 @property (nonatomic, strong, readonly) TWUser *user;
 @property (nonatomic, strong, readonly) NSDate *createdAt;
 @property (nonatomic, strong, readonly) NSNumber *retweetCount;

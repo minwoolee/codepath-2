@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong, readwrite) NSString *id;
 @property (nonatomic, strong, readwrite) NSString *text;
+@property (nonatomic, strong, readwrite) NSString *retweetedBy;
 @property (nonatomic, strong, readwrite) TWUser *user;
 @property (nonatomic, strong, readwrite) NSDate *createdAt;
 @property (nonatomic, strong, readwrite) NSNumber *retweetCount;
@@ -29,6 +30,7 @@ static NSString *const kUserKey = @"user";
 static NSString *const kCreateAtKey = @"created_at";
 static NSString *const kRetweetCountKey = @"retweet_count";
 static NSString *const kFavoritesCountKey = @"favorite_count";
+static NSString *const kRetweetedByKey = @"retweeted_status.user.screen_name";
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 {
@@ -43,6 +45,7 @@ static NSString *const kFavoritesCountKey = @"favorite_count";
         self.createdAt = [formatter dateFromString:dictionary[kCreateAtKey]];
         self.retweetCount = dictionary[kRetweetCountKey];
         self.favoritesCount = dictionary[kFavoritesCountKey];
+        self.retweetedBy = [dictionary valueForKeyPath:kRetweetedByKey];
     }
     return self;
 }

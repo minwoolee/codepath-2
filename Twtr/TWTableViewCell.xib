@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="width" secondItem="8lj-Sb-nue" secondAttribute="height" multiplier="1:1" id="L7N-K8-2bG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="retweeter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOU-8D-27L" userLabel="retweet count">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="retweeter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOU-8D-27L">
                                 <rect key="frame" x="68" y="5.5" width="61.5" height="14.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="TEo-VB-loe"/>
@@ -175,7 +175,7 @@
                 <outlet property="profileImageView" destination="xje-Cw-J8d" id="N8c-mE-f9B"/>
                 <outlet property="replyButton" destination="OKR-pD-p27" id="BOR-lg-Hkg"/>
                 <outlet property="retweetButton" destination="3Tb-nz-jO6" id="f5I-Z3-SAK"/>
-                <outlet property="retweetCountLabel" destination="LOU-8D-27L" id="w45-IW-pRy"/>
+                <outlet property="retweetedByLabel" destination="LOU-8D-27L" id="fN0-bE-4gB"/>
                 <outlet property="timestampLabel" destination="KWY-oL-44l" id="oHc-yD-ui5"/>
                 <outlet property="topContainerHeightConstraint" destination="aGF-v2-fgs" id="hD4-9E-iDK"/>
                 <outlet property="topContainerView" destination="e8N-cD-oGh" id="jcX-dq-W3q"/>
