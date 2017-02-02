@@ -42,6 +42,7 @@
     newButton.action = @selector(handleCompose:);
     newButton.title = @"New";
     self.navigationItem.rightBarButtonItem = newButton;
+
     UIBarButtonItem *signOutButton = [UIBarButtonItem new];
     signOutButton.target = self;
     signOutButton.action = @selector(handleSignOut:);

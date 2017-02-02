@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TWComposeViewController">
             <connections>
+                <outlet property="charCountLabel" destination="emW-YS-1Jq" id="rC7-LF-OYh"/>
                 <outlet property="handleLabel" destination="MZD-ks-LBT" id="zaW-xP-9JI"/>
                 <outlet property="nameLabel" destination="0Lu-Au-aMp" id="afB-WH-LiJ"/>
                 <outlet property="profileImageView" destination="N24-J7-QZH" id="1n6-SJ-UNm"/>
@@ -49,16 +50,29 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-ec-nrm">
-                    <rect key="frame" x="20" y="72" width="335" height="575"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="250" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-ec-nrm">
+                    <rect key="frame" x="20" y="72" width="335" height="150"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="OG3-Hi-asM"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="yVs-nG-rrb"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emW-YS-1Jq" userLabel="char_count">
+                    <rect key="frame" x="347" y="44.5" width="8" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="EPk-Br-2OV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="emW-YS-1Jq" firstAttribute="centerY" secondItem="MZD-ks-LBT" secondAttribute="centerY" id="269-TN-7Sd"/>
                 <constraint firstItem="MZD-ks-LBT" firstAttribute="leading" secondItem="0Lu-Au-aMp" secondAttribute="leading" id="612-E8-1Xh"/>
                 <constraint firstAttribute="trailing" secondItem="Ge6-ec-nrm" secondAttribute="trailing" constant="20" symbolic="YES" id="6G2-Oe-dkA"/>
                 <constraint firstItem="Ge6-ec-nrm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="FbM-UZ-RQw"/>
@@ -66,8 +80,9 @@
                 <constraint firstItem="MZD-ks-LBT" firstAttribute="height" secondItem="0Lu-Au-aMp" secondAttribute="height" id="K3j-9l-vxu"/>
                 <constraint firstItem="0Lu-Au-aMp" firstAttribute="top" secondItem="N24-J7-QZH" secondAttribute="top" id="PIl-wE-vLn"/>
                 <constraint firstItem="N24-J7-QZH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" symbolic="YES" id="TdR-h0-R2Y"/>
-                <constraint firstItem="Ge6-ec-nrm" firstAttribute="top" secondItem="N24-J7-QZH" secondAttribute="bottom" constant="8" symbolic="YES" id="oK4-VP-XMK"/>
-                <constraint firstAttribute="bottom" secondItem="Ge6-ec-nrm" secondAttribute="bottom" constant="20" symbolic="YES" id="uno-X0-bWW"/>
+                <constraint firstAttribute="trailing" secondItem="emW-YS-1Jq" secondAttribute="trailing" constant="20" symbolic="YES" id="bSr-4R-jIe"/>
+                <constraint firstItem="Ge6-ec-nrm" firstAttribute="top" secondItem="N24-J7-QZH" secondAttribute="bottom" constant="8" id="bl3-Sk-TSV"/>
+                <constraint firstItem="emW-YS-1Jq" firstAttribute="height" secondItem="MZD-ks-LBT" secondAttribute="height" id="sj1-ju-LYE"/>
                 <constraint firstItem="MZD-ks-LBT" firstAttribute="bottom" secondItem="N24-J7-QZH" secondAttribute="bottom" id="vpj-3X-Iwu"/>
                 <constraint firstItem="0Lu-Au-aMp" firstAttribute="leading" secondItem="N24-J7-QZH" secondAttribute="trailing" constant="8" symbolic="YES" id="y55-Em-JRd"/>
             </constraints>

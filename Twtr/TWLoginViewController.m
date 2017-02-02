@@ -33,13 +33,8 @@
             NSLog(@"Failed to login with error: %@", error);
         } else {
             // do main app stuff
-            NSLog(@"User: %@", user);
+            NSLog(@"Logged in as user: %@", user);
             [[TWNavigationManager sharedInstance] logIn:user];
-//            
-//            TWNavigationController *twNavigationController = [TWNavigationController new];
-//            [self presentViewController:twNavigationController animated:YES completion:^{
-//                // TODO: anything?
-//            }];
         }
     }];
 }

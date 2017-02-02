@@ -41,14 +41,13 @@ static NSString *const kCurrentUserKey = @"currentUser";
     return self;
 }
 
-+ (TWUser *)getCurrentUser;
++ (TWUser *)currentUser;
 {
     TWUser *currentUser = nil;
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentUserKey];
     NSDictionary *dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (dictionary) {
         currentUser = [[TWUser alloc] initWithDictionary:dictionary];
-        NSLog(@"Current user: %@", currentUser);
     } else {
         NSLog(@"No current user set");
     }

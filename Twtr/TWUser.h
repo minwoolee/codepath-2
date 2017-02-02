@@ -17,7 +17,7 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
-+ (TWUser *)getCurrentUser;
++ (TWUser *)currentUser;
 + (void)setCurrentUser:(TWUser *)user;
 
 @end

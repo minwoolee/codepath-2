@@ -24,7 +24,6 @@
 		A092E6F31E3FF3D3008D43DB /* TWTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A092E6F21E3FF3D3008D43DB /* TWTwitterClient.m */; };
 		A0C651BA1E40068E00679C97 /* TWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C651B91E40068E00679C97 /* TWUser.m */; };
 		A0C651BD1E4006A200679C97 /* TWTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = A0C651BC1E4006A200679C97 /* TWTweet.m */; };
-		A0CD53A71E415A6500B19507 /* TWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53A61E415A6400B19507 /* TWNavigationController.m */; };
 		A0CD53AB1E41669700B19507 /* TWComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53A91E41669700B19507 /* TWComposeViewController.m */; };
 		A0CD53AC1E41669700B19507 /* TWComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */; };
 		A0CD53EF1E428B5100B19507 /* TWDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53ED1E428B5100B19507 /* TWDetailViewController.m */; };
@@ -85,8 +84,6 @@
 		A0C651B91E40068E00679C97 /* TWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWUser.m; path = Twtr/TWUser.m; sourceTree = "<group>"; };
 		A0C651BB1E4006A200679C97 /* TWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWTweet.h; path = Twtr/TWTweet.h; sourceTree = "<group>"; };
 		A0C651BC1E4006A200679C97 /* TWTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWTweet.m; path = Twtr/TWTweet.m; sourceTree = "<group>"; };
-		A0CD53A51E415A6400B19507 /* TWNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWNavigationController.h; path = Twtr/TWNavigationController.h; sourceTree = "<group>"; };
-		A0CD53A61E415A6400B19507 /* TWNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWNavigationController.m; path = Twtr/TWNavigationController.m; sourceTree = "<group>"; };
 		A0CD53A81E41669700B19507 /* TWComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWComposeViewController.h; sourceTree = "<group>"; };
 		A0CD53A91E41669700B19507 /* TWComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWComposeViewController.m; sourceTree = "<group>"; };
 		A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWComposeViewController.xib; sourceTree = "<group>"; };
@@ -232,8 +229,6 @@
 				A092E6EC1E3FF264008D43DB /* TWLoginViewController.h */,
 				A092E6ED1E3FF264008D43DB /* TWLoginViewController.m */,
 				A092E6EE1E3FF264008D43DB /* TWLoginViewController.xib */,
-				A0CD53A51E415A6400B19507 /* TWNavigationController.h */,
-				A0CD53A61E415A6400B19507 /* TWNavigationController.m */,
 				A0CD53A81E41669700B19507 /* TWComposeViewController.h */,
 				A0CD53A91E41669700B19507 /* TWComposeViewController.m */,
 				A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */,
@@ -558,7 +553,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0CD53A71E415A6500B19507 /* TWNavigationController.m in Sources */,
 				A0C651BD1E4006A200679C97 /* TWTweet.m in Sources */,
 				A0CD53F31E42B1CC00B19507 /* TWNavigationManager.m in Sources */,
 				A092E6EF1E3FF264008D43DB /* TWLoginViewController.m in Sources */,

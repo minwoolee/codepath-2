@@ -35,6 +35,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.navigationItem.title = @"Tweet";
     UIBarButtonItem *replyButton = [UIBarButtonItem new];
     replyButton.target = self;
@@ -62,14 +64,6 @@
         self.topContainerHeightConstraint.constant = 0;
         [self.view setNeedsUpdateConstraints];
     }
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    CGFloat top = [self.topLayoutGuide length];
-    CGRect frame = self.view.frame;
-    self.view.frame = CGRectMake(0, top, CGRectGetWidth(frame), CGRectGetHeight(frame) - top);
 }
 
 - (void)didReceiveMemoryWarning {

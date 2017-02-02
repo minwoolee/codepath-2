@@ -7,13 +7,16 @@
 //
 
 #import "TWComposeViewController.h"
+#import "TWTwitterClient.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
-@interface TWComposeViewController ()
+@interface TWComposeViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *handleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
+@property (weak, nonatomic) IBOutlet UILabel *charCountLabel;
 
 @end
 
@@ -22,14 +25,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-}
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    CGFloat top = [self.topLayoutGuide length];
-    CGRect frame = self.view.frame;
-    self.view.frame = CGRectMake(0, top, CGRectGetWidth(frame), CGRectGetHeight(frame) - top);
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    TWUser *currentUser = TWUser.currentUser;
+    if (currentUser) {
+        [self.profileImageView setImageWithURL:[NSURL URLWithString:currentUser.profileImageUrlString]];
+        self.nameLabel.text = currentUser.name;
+        self.handleLabel.text = currentUser.screenName;
+    }
+
+    self.tweetTextView.delegate = self;
+    
+    UIBarButtonItem *tweetButton = [UIBarButtonItem new];
+    tweetButton.target = self;
+    tweetButton.action = @selector(handleTweet:);
+    tweetButton.title = @"Tweet";
+    self.navigationItem.rightBarButtonItem = tweetButton;
+    
+    [self.tweetTextView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,14 +51,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - UITextViewDelegate methods
+- (void)textViewDidChange:(UITextView *)textView;
+{
+    self.charCountLabel.text = [@(textView.text.length) stringValue];
+//    NSLog(@"%@", [@(textView.text.length) stringValue]);
 }
-*/
+
+#pragma mark - app methods
+
+- (void)handleTweet:(id)sender;
+{
+    
+}
 
 @end
