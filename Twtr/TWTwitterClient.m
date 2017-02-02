@@ -102,4 +102,16 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
+- (void)statusForId:(NSString *)statusId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
+    [self GET:[NSString stringWithFormat:@"1.1/statuses/show/%@.json", statusId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        // show progress
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"timelineWithCompletion failed with error: %@", error);
+        completion(nil, error);
+    }];
+}
+
 @end

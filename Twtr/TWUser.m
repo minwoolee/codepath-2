@@ -57,6 +57,7 @@ static NSString *const kCurrentUserKey = @"currentUser";
 
 + (void)setCurrentUser:(TWUser *)user;
 {
+    // TODO: use keychain
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (user == nil) {
         [userDefaults removeObjectForKey:kCurrentUserKey];

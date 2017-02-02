@@ -28,9 +28,8 @@
 {
     [super viewDidLayoutSubviews];
     CGFloat top = [self.topLayoutGuide length];
-    CGFloat bottom = [self.bottomLayoutGuide length];
-    UIEdgeInsets insets = UIEdgeInsetsMake(top, 0, bottom, 0);
-    self.contentInset = insets;
+    CGRect frame = self.view.frame;
+    self.view.frame = CGRectMake(0, top, CGRectGetWidth(frame), CGRectGetHeight(frame) - top);
 }
 
 - (void)didReceiveMemoryWarning {

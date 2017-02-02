@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "TWLoginViewController.h"
 #import "TWComposeViewController.h"
+#import "TWDetailViewController.h"
 
 @interface TWListViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -81,6 +82,14 @@
     TWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TWTableViewCell" forIndexPath:indexPath];
     cell.tweet = self.tweets[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TWDetailViewController *detailViewController = [TWDetailViewController new];
+    detailViewController.tweet = self.tweets[indexPath.row];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 - (void)loadTweets;

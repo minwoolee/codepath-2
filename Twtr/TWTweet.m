@@ -12,31 +12,37 @@
 
 @property (nonatomic, strong) NSDictionary *dictionary;
 
+@property (nonatomic, strong, readwrite) NSString *id;
 @property (nonatomic, strong, readwrite) NSString *text;
 @property (nonatomic, strong, readwrite) TWUser *user;
 @property (nonatomic, strong, readwrite) NSDate *createdAt;
 @property (nonatomic, strong, readwrite) NSNumber *retweetCount;
+@property (nonatomic, strong, readwrite) NSNumber *favoritesCount;
 
 @end
 
 @implementation TWTweet
 
+static NSString *const kIdKey = @"id_str";
 static NSString *const kTextKey = @"text";
 static NSString *const kUserKey = @"user";
 static NSString *const kCreateAtKey = @"created_at";
 static NSString *const kRetweetCountKey = @"retweet_count";
+static NSString *const kFavoritesCountKey = @"favorite_count";
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 {
     self = [super init];
     if (self) {
         self.dictionary = dictionary;
+        self.id = dictionary[kIdKey];
         self.text = dictionary[kTextKey];
         self.user = [[TWUser alloc] initWithDictionary:dictionary[kUserKey]];
         NSDateFormatter *formatter = [NSDateFormatter new];
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         self.createdAt = [formatter dateFromString:dictionary[kCreateAtKey]];
         self.retweetCount = dictionary[kRetweetCountKey];
+        self.favoritesCount = dictionary[kFavoritesCountKey];
     }
     return self;
 }

@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *topContainerView;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topContainerHeightConstraint;
 
@@ -43,8 +46,11 @@
     self.contentLabel.text = tweet.text;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrlString]];
     if (tweet.retweetCount == nil || [tweet.retweetCount intValue] == 0) {
+        self.topContainerView.hidden = YES;
         self.topContainerHeightConstraint.constant = 0;
         [self setNeedsUpdateConstraints];
+    } else {
+        self.retweetCountLabel.text = [tweet.retweetCount stringValue];
     }
 }
 
