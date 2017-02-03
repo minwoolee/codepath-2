@@ -57,40 +57,40 @@ static NSString *const kRetweetedKey = @"retweeted";
     return self;
 }
 
-- (void)toggleFavorithWithCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)toggleFavorithWithCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     if (self.favorited) {
-        [[TWTwitterClient sharedInstance] unfavoriteTweetWithId:self.tweetId withCompletion:^(NSDictionary *dictionary, NSError *error) {
+        [[TWTwitterClient sharedInstance] unfavoriteTweetWithId:self.tweetId withCompletion:^(TWTweet *tweet, NSError *error) {
             if (!error) {
                 self.favorited = NO;
             }
-            completion(dictionary, error);
+            completion(tweet, error);
         }];
     } else {
-        [[TWTwitterClient sharedInstance] favoriteTweetWithId:self.tweetId withCompletion:^(NSDictionary *dictionary, NSError *error) {
+        [[TWTwitterClient sharedInstance] favoriteTweetWithId:self.tweetId withCompletion:^(TWTweet *tweet, NSError *error) {
             if (!error) {
                 self.favorited = YES;
             }
-            completion(dictionary, error);
+            completion(tweet, error);
         }];
     }
 }
 
-- (void)toggleRetweetWithCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)toggleRetweetWithCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     if (self.retweeted) {
-        [[TWTwitterClient sharedInstance] unretweetTweetWithId:self.tweetId withCompletion:^(NSDictionary *dictionary, NSError *error) {
+        [[TWTwitterClient sharedInstance] unretweetTweetWithId:self.tweetId withCompletion:^(TWTweet *tweet, NSError *error) {
             if (!error) {
                 self.retweeted = NO;
             }
-            completion(dictionary, error);
+            completion(tweet, error);
         }];
     } else {
-        [[TWTwitterClient sharedInstance] retweetTweetWithId:self.tweetId withCompletion:^(NSDictionary *dictionary, NSError *error) {
+        [[TWTwitterClient sharedInstance] retweetTweetWithId:self.tweetId withCompletion:^(TWTweet *tweet, NSError *error) {
             if (!error) {
                 self.retweeted = YES;
             }
-            completion(dictionary, error);
+            completion(tweet, error);
         }];
     }
 }

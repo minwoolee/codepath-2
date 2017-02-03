@@ -20,7 +20,9 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
-+ (TWUser *)currentUser;
 + (void)setCurrentUser:(TWUser *)user;
+
++ (TWUser *)currentUser;
++ (NSArray<TWUser*> *)usersWithArray:(NSArray<NSDictionary *> *)array;
 
 @end

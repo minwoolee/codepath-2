@@ -31,6 +31,10 @@
 		A0CD53F31E42B1CC00B19507 /* TWNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53F21E42B1CC00B19507 /* TWNavigationManager.m */; };
 		A0CD53FA1E43C08E00B19507 /* TWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53F81E43C08E00B19507 /* TWProfileViewController.m */; };
 		A0CD53FB1E43C08E00B19507 /* TWProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0CD53F91E43C08E00B19507 /* TWProfileViewController.xib */; };
+		A0CD53FF1E45010B00B19507 /* TWProfileCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD53FD1E45010B00B19507 /* TWProfileCollectionViewController.m */; };
+		A0CD54001E45010B00B19507 /* TWProfileCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0CD53FE1E45010B00B19507 /* TWProfileCollectionViewController.xib */; };
+		A0CD54041E45018000B19507 /* TWProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0CD54021E45018000B19507 /* TWProfileCollectionViewCell.m */; };
+		A0CD54051E45018000B19507 /* TWProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0CD54031E45018000B19507 /* TWProfileCollectionViewCell.xib */; };
 		C5CC71F96751EC7F572E7E9E /* libPods-TwtrUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E6C1B4242AA7AF306D382B /* libPods-TwtrUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +101,12 @@
 		A0CD53F71E43C08E00B19507 /* TWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWProfileViewController.h; path = Twtr/TWProfileViewController.h; sourceTree = "<group>"; };
 		A0CD53F81E43C08E00B19507 /* TWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWProfileViewController.m; path = Twtr/TWProfileViewController.m; sourceTree = "<group>"; };
 		A0CD53F91E43C08E00B19507 /* TWProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWProfileViewController.xib; path = Twtr/TWProfileViewController.xib; sourceTree = "<group>"; };
+		A0CD53FC1E45010B00B19507 /* TWProfileCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWProfileCollectionViewController.h; path = Twtr/TWProfileCollectionViewController.h; sourceTree = "<group>"; };
+		A0CD53FD1E45010B00B19507 /* TWProfileCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWProfileCollectionViewController.m; path = Twtr/TWProfileCollectionViewController.m; sourceTree = "<group>"; };
+		A0CD53FE1E45010B00B19507 /* TWProfileCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWProfileCollectionViewController.xib; path = Twtr/TWProfileCollectionViewController.xib; sourceTree = "<group>"; };
+		A0CD54011E45018000B19507 /* TWProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWProfileCollectionViewCell.h; path = Twtr/TWProfileCollectionViewCell.h; sourceTree = "<group>"; };
+		A0CD54021E45018000B19507 /* TWProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWProfileCollectionViewCell.m; path = Twtr/TWProfileCollectionViewCell.m; sourceTree = "<group>"; };
+		A0CD54031E45018000B19507 /* TWProfileCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWProfileCollectionViewCell.xib; path = Twtr/TWProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		CDC1B33C427D3F1352111B58 /* libPods-TwtrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwtrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED57599418A51A0DF4CBB67 /* Pods-TwtrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwtrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwtrUITests/Pods-TwtrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA6EAF0DE776A9015A60F6DF /* libPods-Twtr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twtr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +250,9 @@
 				A092E6EC1E3FF264008D43DB /* TWLoginViewController.h */,
 				A092E6ED1E3FF264008D43DB /* TWLoginViewController.m */,
 				A092E6EE1E3FF264008D43DB /* TWLoginViewController.xib */,
+				A0CD53FC1E45010B00B19507 /* TWProfileCollectionViewController.h */,
+				A0CD53FD1E45010B00B19507 /* TWProfileCollectionViewController.m */,
+				A0CD53FE1E45010B00B19507 /* TWProfileCollectionViewController.xib */,
 				A0CD53F71E43C08E00B19507 /* TWProfileViewController.h */,
 				A0CD53F81E43C08E00B19507 /* TWProfileViewController.m */,
 				A0CD53F91E43C08E00B19507 /* TWProfileViewController.xib */,
@@ -251,6 +264,9 @@
 		A0C651C01E40661700679C97 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A0CD54011E45018000B19507 /* TWProfileCollectionViewCell.h */,
+				A0CD54021E45018000B19507 /* TWProfileCollectionViewCell.m */,
+				A0CD54031E45018000B19507 /* TWProfileCollectionViewCell.xib */,
 				A092E6E71E3FC821008D43DB /* TWTableViewCell.h */,
 				A092E6E81E3FC821008D43DB /* TWTableViewCell.m */,
 				A092E6E91E3FC821008D43DB /* TWTableViewCell.xib */,
@@ -395,8 +411,10 @@
 				A092E6BA1E3FBE22008D43DB /* LaunchScreen.storyboard in Resources */,
 				A092E6F01E3FF264008D43DB /* TWLoginViewController.xib in Resources */,
 				A0CD53F01E428B5100B19507 /* TWDetailViewController.xib in Resources */,
+				A0CD54051E45018000B19507 /* TWProfileCollectionViewCell.xib in Resources */,
 				A092E6E61E3FC3CC008D43DB /* TWListViewController.xib in Resources */,
 				A092E6EB1E3FC821008D43DB /* TWTableViewCell.xib in Resources */,
+				A0CD54001E45010B00B19507 /* TWProfileCollectionViewController.xib in Resources */,
 				A0CD53AC1E41669700B19507 /* TWComposeViewController.xib in Resources */,
 				A092E6B71E3FBE22008D43DB /* Assets.xcassets in Resources */,
 				A0CD53FB1E43C08E00B19507 /* TWProfileViewController.xib in Resources */,
@@ -573,6 +591,8 @@
 				A0CD53AB1E41669700B19507 /* TWComposeViewController.m in Sources */,
 				A092E6AC1E3FBE22008D43DB /* main.m in Sources */,
 				A0C651BA1E40068E00679C97 /* TWUser.m in Sources */,
+				A0CD54041E45018000B19507 /* TWProfileCollectionViewCell.m in Sources */,
+				A0CD53FF1E45010B00B19507 /* TWProfileCollectionViewController.m in Sources */,
 				A092E6F31E3FF3D3008D43DB /* TWTwitterClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

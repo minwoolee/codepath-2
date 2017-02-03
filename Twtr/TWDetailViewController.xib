@@ -34,14 +34,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fXe-Af-fT5">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fXe-Af-fT5">
                     <rect key="frame" x="20" y="33" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="RZf-bR-iak"/>
                         <constraint firstAttribute="height" constant="44" id="czd-3j-Qvc"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN2-RK-6qs" userLabel="Name">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN2-RK-6qs" userLabel="Name">
                     <rect key="frame" x="72" y="33" width="40" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Own-tx-bn2"/>
@@ -51,7 +51,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZv-Sg-J7w" userLabel="Handle">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZv-Sg-J7w" userLabel="Handle">
                     <rect key="frame" x="72" y="57" width="44.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="hI0-Ug-tpo"/>
@@ -130,6 +130,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFS-AD-zNh" userLabel="Reply">
                                     <rect key="frame" x="0.0" y="0.0" width="98.5" height="45"/>
                                     <state key="normal" title="Reply" image="reply-icon"/>
+                                    <connections>
+                                        <action selector="reply:" destination="-1" eventType="touchUpInside" id="nCd-qJ-OR9"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3x7-NY-jnx" userLabel="Retweet">
                                     <rect key="frame" x="98.5" y="0.0" width="98" height="45"/>

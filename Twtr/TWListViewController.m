@@ -14,7 +14,6 @@
 #import "TWComposeViewController.h"
 #import "TWDetailViewController.h"
 #import "TWNavigationManager.h"
-#import "TWProfileViewController.h"
 
 @interface TWListViewController () <UITableViewDelegate, UITableViewDataSource, TWTableCellActionDelegate>
 
@@ -36,42 +35,19 @@
     self.tableView.estimatedRowHeight = 200;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    // configure navigation bar
-//    NSString *tabBarTitle = self.navigationController.tabBarItem.title;
-//    self.navigationItem.title = tabBarTitle;
-//    
-//    if ([tabBarTitle isEqualToString:@"Timeline"]) {
-//        UIBarButtonItem *newButton = [UIBarButtonItem new];
-//        newButton.target = self;
-//        newButton.action = @selector(handleCompose:);
-//        newButton.title = @"New";
-//        self.navigationItem.rightBarButtonItem = newButton;
-//        
-//        UIBarButtonItem *signOutButton = [UIBarButtonItem new];
-//        signOutButton.target = self;
-//        signOutButton.action = @selector(handleSignOut:);
-//        signOutButton.title = @"Sign Out";
-//        self.navigationItem.leftBarButtonItem = signOutButton;
-//    }
-    
     UINib *cellNib = [UINib nibWithNibName:@"TWTableViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"TWTableViewCell"];
     
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
-
-    [self loadTweets];
 }
 
-//- (void)viewDidLayoutSubviews
-//{
-//    [super viewDidLayoutSubviews];
-//    CGFloat top = [self.topLayoutGuide length];
-//    CGFloat bottom = [self.bottomLayoutGuide length];
-//    UIEdgeInsets insets = UIEdgeInsetsMake(top, 0, bottom, 0);
-//    self.tableView.contentInset = insets;
-//}
+- (void)viewWillAppear:(BOOL)animated;
+{
+    // reload table view in case tweet was favorited or retweeted in detail view
+    [self loadTweets];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -113,7 +89,7 @@
 
 - (void)handleRetweet:(TWTweet *)tweet;
 {
-    [tweet toggleRetweetWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+    [tweet toggleRetweetWithCompletion:^(TWTweet *tweet, NSError *error) {
         if (!error) {
             [self.tableView reloadData];
         }
@@ -122,7 +98,7 @@
 
 - (void)handleFavorite:(TWTweet *)tweet;
 {
-    [tweet toggleFavorithWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+    [tweet toggleFavorithWithCompletion:^(TWTweet *tweet, NSError *error) {
         if (!error) {
             [self.tableView reloadData];
         }
@@ -131,16 +107,15 @@
 
 - (void)handleReplyToTweet:(TWTweet *)tweet;
 {
-    NSString *tweetId = tweet.tweetId;
     TWComposeViewController *composeViewController = [TWComposeViewController new];
-    composeViewController.replyingToTweetId = tweetId;
+    composeViewController.replyingToTweet = tweet;
+    composeViewController.replyingToUser = tweet.user;
     [self.navigationController pushViewController:composeViewController animated:YES];
 }
 
 - (void)handleProfileViewForUser:(TWUser *)user;
 {
-    TWProfileViewController *profileViewController = [TWProfileViewController new];
-    profileViewController.user = user;
+    UIViewController *profileViewController = [[TWNavigationManager sharedInstance] profileViewControllerForUser:user];
     [self.navigationController pushViewController:profileViewController animated:YES];
 }
 

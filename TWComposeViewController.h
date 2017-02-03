@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TWUser.h"
+#import "TWTweet.h"
 
 @interface TWComposeViewController : UIViewController
 
-// TODO: need visual cue of replying action
-@property (nonatomic, strong) NSString *replyingToTweetId;
+@property (nonatomic, strong) TWTweet *replyingToTweet;
+@property (nonatomic, strong) TWUser *replyingToUser;
 
 @end

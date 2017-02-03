@@ -62,16 +62,34 @@ static const int ROW_FOLLOWING = 2;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"defaultCell"];
     }
     
+    TWUser *user = self.user;
     switch(indexPath.row) {
         case ROW_TWEETS:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ Tweets", self.user.tweetCount];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ Tweets", user.tweetCount];
+            if (user.tweetCount > 0) {
+                cell.userInteractionEnabled = YES;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else {
+                cell.userInteractionEnabled = NO;
+            }
             break;
         case ROW_FOLLOWERS:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ Followers", self.user.followersCount];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ Followers", user.followersCount];
+            if (user.followersCount > 0) {
+                cell.userInteractionEnabled = YES;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else {
+                cell.userInteractionEnabled = NO;
+            }
             break;
         case ROW_FOLLOWING:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ Following", self.user.followingCount];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ Following", user.followingCount];
+            if (user.followingCount > 0) {
+                cell.userInteractionEnabled = YES;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else {
+                cell.userInteractionEnabled = NO;
+            }
             break;
         default:
             break;
@@ -88,7 +106,21 @@ static const int ROW_FOLLOWING = 2;
     switch(indexPath.row) {
         case ROW_TWEETS:
         {
-            UIViewController *vc = [[TWNavigationManager sharedInstance] tweetsListViewControllerFor:self.user];
+            UIViewController *vc = [[TWNavigationManager sharedInstance] tweetsListViewControllerForUser:self.user];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case ROW_FOLLOWERS:
+        {
+            UIViewController *vc = [[TWNavigationManager sharedInstance] usersListViewControllerFollowingUser:self.user];
+            vc.navigationItem.title = @"Followers";
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case ROW_FOLLOWING:
+        {
+            UIViewController *vc = [[TWNavigationManager sharedInstance] usersListViewControllerFollowedByUser:self.user];
+            vc.navigationItem.title = @"Following";
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }

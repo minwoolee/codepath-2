@@ -43,6 +43,10 @@
     tweetButton.title = @"Tweet";
     self.navigationItem.rightBarButtonItem = tweetButton;
     
+    if (self.replyingToUser) {
+        self.tweetTextView.text = [NSString stringWithFormat:@"@%@ ", self.replyingToUser.screenName];
+    }
+    
     [self.tweetTextView becomeFirstResponder];
 }
 
@@ -62,7 +66,7 @@
 
 - (void)handleTweet:(id)sender;
 {
-    [[TWTwitterClient sharedInstance] tweet:self.tweetTextView.text inReplyTo:self.replyingToTweetId withCompletion:^(NSDictionary *dictionary, NSError *error) {
+    [[TWTwitterClient sharedInstance] tweet:self.tweetTextView.text inReplyTo:self.replyingToTweet.tweetId withCompletion:^(TWTweet *tweet, NSError *error) {
         if (error) {
             NSLog(@"Tweet failed with error: %@", error);
         } else {

@@ -29,7 +29,7 @@ static NSString *const kScreenNameKey = @"screen_name";
 static NSString *const kProfileImageUrlKey = @"profile_image_url";
 static NSString *const kTaglineKey = @"description";
 static NSString *const kTweetsCountKey = @"statuses_count";
-static NSString *const kFollowingCountKey = @"following";
+static NSString *const kFollowingCountKey = @"friends_count";
 static NSString *const kFollowersCountKey = @"followers_count";
 
 static NSString *const kCurrentUserKey = @"currentUser";
@@ -75,6 +75,16 @@ static NSString *const kCurrentUserKey = @"currentUser";
         [userDefaults setObject:data forKey:kCurrentUserKey];
     }
     [userDefaults synchronize];
+}
+
++ (NSArray<TWUser*> *)usersWithArray:(NSArray<NSDictionary *> *)array;
+{
+    NSMutableArray *users = [NSMutableArray array];
+    for (NSDictionary *dictionary in array) {
+        TWUser *user = [[TWUser alloc] initWithDictionary:dictionary];
+        [users addObject:user];
+    }
+    return users;
 }
 
 - (NSString *)description;

@@ -25,8 +25,8 @@
 
 // tweet actions
 //
-- (void)toggleFavorithWithCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
-- (void)toggleRetweetWithCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)toggleFavorithWithCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
+- (void)toggleRetweetWithCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 
 + (NSArray<TWTweet*> *)tweetsWithArray:(NSArray<NSDictionary *> *)array;
 

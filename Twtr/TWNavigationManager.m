@@ -12,6 +12,7 @@
 #import "TWListViewController.h"
 #import "TWProfileViewController.h"
 #import "TWComposeViewController.h"
+#import "TWProfileCollectionViewController.h"
 
 @interface TWNavigationManager()
 
@@ -104,9 +105,8 @@
     // Profile tab
     //
     UINavigationController *profileTab = [UINavigationController new];
-    TWProfileViewController *twProfileViewController = [TWProfileViewController new];
-    twProfileViewController.user = TWUser.currentUser;
-    [profileTab pushViewController:twProfileViewController animated:YES];
+    UIViewController *profileViewController = [[TWNavigationManager sharedInstance] profileViewControllerForUser:TWUser.currentUser];
+    [profileTab pushViewController:profileViewController animated:YES];
     profileTab.tabBarItem.title = @"Profile";
     profileTab.tabBarItem.image = [UIImage imageNamed:@"profile-icon"];
 
@@ -122,11 +122,32 @@
     return [TWLoginViewController new];
 }
 
-- (UIViewController *)tweetsListViewControllerFor:(TWUser *)user;
+- (UIViewController *)profileViewControllerForUser:(TWUser *)user;
+{
+    TWProfileViewController *profileViewController = [TWProfileViewController new];
+    profileViewController.user = user;
+    return profileViewController;
+}
+
+- (UIViewController *)tweetsListViewControllerForUser:(TWUser *)user;
 {
     TWListViewController *tweetsViewController = [TWListViewController new];
     tweetsViewController.api = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?screen_name=%@", user.screenName];
     return tweetsViewController;
+}
+
+- (UIViewController *)usersListViewControllerFollowingUser:(TWUser *)user;
+{
+    TWProfileCollectionViewController *profileCollectionViewController = [[TWProfileCollectionViewController alloc] initWithNibName:@"TWProfileCollectionViewController" bundle:nil];
+    profileCollectionViewController.api = [NSString stringWithFormat:@"1.1/followers/list.json?skip_status=true&screen_name=%@", user.screenName];
+    return profileCollectionViewController;
+}
+
+- (UIViewController *)usersListViewControllerFollowedByUser:(TWUser *)user;
+{
+    TWProfileCollectionViewController *profileCollectionViewController = [[TWProfileCollectionViewController alloc] initWithNibName:@"TWProfileCollectionViewController" bundle:nil];
+    profileCollectionViewController.api = [NSString stringWithFormat:@"1.1/friends/list.json?skip_status=true&screen_name=%@", user.screenName];
+    return profileCollectionViewController;
 }
 
 - (void)handleCompose:(id)sender;

@@ -94,20 +94,33 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completion([TWTweet tweetsWithArray:responseObject], nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"timelineWithCompletion failed with error: %@", error);
+        NSLog(@"timelineApi:withCompletion failed with error: %@", error);
         completion(nil, error);
     }];
 }
 
+#pragma mark - method dealing with User list
+
+- (void)usersApi:(NSString *)api withCompletion:(void (^)(NSArray<TWUser *> *users, NSError *error))completion;
+{
+    [self GET:api parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        // show progress
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion([TWUser usersWithArray:responseObject[@"users"]], nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"usersApi:WithCompletion failed with error: %@", error);
+        completion(nil, error);
+    }];
+}
 
 #pragma mark - methods dealing with Tweet object
 
-- (void)tweet:(NSString*)tweet withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)tweet:(NSString*)tweet withCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     [self tweet:tweet inReplyTo:nil withCompletion:completion];
 }
 
-- (void)tweet:(NSString*)tweet inReplyTo:(NSString*)replyingTweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)tweet:(NSString*)tweet inReplyTo:(NSString*)replyingTweetId withCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     NSString *api = [NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", [tweet stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
     if (replyingTweetId) {
@@ -116,34 +129,34 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     [self tweetActionWith:api withCompletion:completion];
 }
 
-- (void)favoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)favoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     NSString *api = [NSString stringWithFormat:@"1.1/favorites/create.json?id=%@", tweetId];
     [self tweetActionWith:api withCompletion:completion];
 }
 
-- (void)unfavoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)unfavoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     NSString *api = [NSString stringWithFormat:@"1.1/favorites/destroy.json?id=%@", tweetId];
     [self tweetActionWith:api withCompletion:completion];
 }
 
-- (void)retweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)retweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     NSString *api = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweetId];
     [self tweetActionWith:api withCompletion:completion];
 }
 
-- (void)unretweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)unretweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     NSString *api = [NSString stringWithFormat:@"1.1/statuses/unretweet/%@.json", tweetId];
     [self tweetActionWith:api withCompletion:completion];
 }
 
-- (void)tweetActionWith:(NSString *)api withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)tweetActionWith:(NSString *)api withCompletion:(void (^)(TWTweet *tweet, NSError *error))completion;
 {
     [self POST:api parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
+        completion([[TWTweet alloc] initWithDictionary:responseObject], nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Tweet action failed with error: %@", error);
         completion(nil, error);

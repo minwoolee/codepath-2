@@ -19,7 +19,10 @@
 
 - (void)setRootViewController;
 
-- (UIViewController *)tweetsListViewControllerFor:(TWUser *)user;
+- (UIViewController *)profileViewControllerForUser:(TWUser *)user;
+- (UIViewController *)tweetsListViewControllerForUser:(TWUser *)user;
+- (UIViewController *)usersListViewControllerFollowingUser:(TWUser *)user;
+- (UIViewController *)usersListViewControllerFollowedByUser:(TWUser *)user;
 
 @property (strong, nonatomic) UIWindow *window;
 

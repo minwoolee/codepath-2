@@ -10,8 +10,10 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "TWUser.h"
 #import "TWTwitterClient.h"
+#import "TWComposeViewController.h"
+#import "TWNavigationManager.h"
 
-@interface TWDetailViewController ()
+@interface TWDetailViewController () <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -38,13 +40,24 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.navigationItem.title = @"Tweet";
-    UIBarButtonItem *replyButton = [UIBarButtonItem new];
-    replyButton.target = self;
-    replyButton.action = @selector(handleReply:);
-    replyButton.title = @"Reply";
-    self.navigationItem.rightBarButtonItem = replyButton;
+//    UIBarButtonItem *replyButton = [UIBarButtonItem new];
+//    replyButton.target = self;
+//    replyButton.action = @selector(handleReply:);
+//    replyButton.title = @"Reply";
+//    self.navigationItem.rightBarButtonItem = replyButton;
 
-    TWTweet *tweet = self.tweet;
+    // Adding UIGestureRecognizer programmatically because "nib must contain exactly one top level object" error
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnProfileImage:)];
+    tap.cancelsTouchesInView = YES;
+    tap.numberOfTapsRequired = 1;
+    tap.delegate = self;
+    [self.profileImageView addGestureRecognizer:tap];
+
+    [self initViewWithTweet:self.tweet];
+}
+
+- (void)initViewWithTweet:(TWTweet *)tweet;
+{
     self.contentLabel.text = tweet.text;
     self.createdAtLabel.text = [NSDateFormatter localizedStringFromDate:tweet.createdAt
                                                               dateStyle:NSDateFormatterShortStyle
@@ -65,8 +78,8 @@
         [self.view setNeedsUpdateConstraints];
     }
     
-    self.favoriteButton.selected = self.tweet.favorited;
-    self.retweetButton.selected = self.tweet.retweeted;
+    self.favoriteButton.selected = tweet.favorited;
+    self.retweetButton.selected = tweet.retweeted;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,27 +87,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)handleReply:(id)sender;
-{
-    
+- (IBAction)reply:(id)sender {
+    TWComposeViewController *composeViewController = [TWComposeViewController new];
+    composeViewController.replyingToTweet = self.tweet;
+    composeViewController.replyingToUser = self.tweet.user;
+    [self.navigationController pushViewController:composeViewController animated:YES];
 }
 
 - (IBAction)favorite:(id)sender {
-    [self.tweet toggleFavorithWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+    [self.tweet toggleFavorithWithCompletion:^(TWTweet *tweet, NSError *error) {
         if (!error) {
-            self.favoriteButton.selected = !self.favoriteButton.selected;
+            self.tweet = tweet;
+            [self initViewWithTweet:tweet];
         }
     }];
 }
 
-// TODO: if you favorite or reteet in detail screen then go back to list view
-// buttons don't reflect the latest state
 - (IBAction)retweet:(id)sender {
-    [self.tweet toggleRetweetWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+    [self.tweet toggleRetweetWithCompletion:^(TWTweet *tweet, NSError *error) {
         if (!error) {
-            self.retweetButton.selected = !self.retweetButton.selected;
+            self.tweet = tweet;
+            [self initViewWithTweet:tweet];
         }
     }];
+}
+
+- (void)tapOnProfileImage:(UITapGestureRecognizer *)sender {
+    UIViewController *profileViewController = [[TWNavigationManager sharedInstance] profileViewControllerForUser:self.tweet.user];
+    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 @end
