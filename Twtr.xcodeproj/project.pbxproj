@@ -90,9 +90,9 @@
 		A0C651B91E40068E00679C97 /* TWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWUser.m; path = Twtr/TWUser.m; sourceTree = "<group>"; };
 		A0C651BB1E4006A200679C97 /* TWTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWTweet.h; path = Twtr/TWTweet.h; sourceTree = "<group>"; };
 		A0C651BC1E4006A200679C97 /* TWTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWTweet.m; path = Twtr/TWTweet.m; sourceTree = "<group>"; };
-		A0CD53A81E41669700B19507 /* TWComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWComposeViewController.h; sourceTree = "<group>"; };
-		A0CD53A91E41669700B19507 /* TWComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWComposeViewController.m; sourceTree = "<group>"; };
-		A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWComposeViewController.xib; sourceTree = "<group>"; };
+		A0CD53A81E41669700B19507 /* Twtr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = Twtr; sourceTree = "<group>"; };
+		A0CD53A91E41669700B19507 /* TWComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWComposeViewController.m; path = Twtr/TWComposeViewController.m; sourceTree = "<group>"; };
+		A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWComposeViewController.xib; path = Twtr/TWComposeViewController.xib; sourceTree = "<group>"; };
 		A0CD53EC1E428B5100B19507 /* TWDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWDetailViewController.h; path = Twtr/TWDetailViewController.h; sourceTree = "<group>"; };
 		A0CD53ED1E428B5100B19507 /* TWDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWDetailViewController.m; path = Twtr/TWDetailViewController.m; sourceTree = "<group>"; };
 		A0CD53EE1E428B5100B19507 /* TWDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWDetailViewController.xib; path = Twtr/TWDetailViewController.xib; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		A0C651BF1E40660800679C97 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A0CD53A81E41669700B19507 /* TWComposeViewController.h */,
+				A0CD53A81E41669700B19507 /* Twtr */,
 				A0CD53A91E41669700B19507 /* TWComposeViewController.m */,
 				A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */,
 				A0CD53EC1E428B5100B19507 /* TWDetailViewController.h */,
