@@ -85,7 +85,7 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
-- (void)timelineApi:(NSString *)api WithCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
+- (void)timelineApi:(NSString *)api withCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
 {
     [self GET:api parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         // show progress
@@ -107,6 +107,12 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
         NSLog(@"timelineWithCompletion failed with error: %@", error);
         completion(nil, error);
     }];
+}
+
+- (void)tweet:(NSString*)tweet withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
+    NSString *api = [NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", [tweet stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+    [self tweetActionWith:api withCompletion:completion];
 }
 
 - (void)favoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;

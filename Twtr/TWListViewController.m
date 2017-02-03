@@ -100,7 +100,7 @@
 
 - (void)loadTweets;
 {
-    [[TWTwitterClient sharedInstance] timelineApi:self.api WithCompletion:^(NSArray<TWTweet *> *tweets, NSError *error) {
+    [[TWTwitterClient sharedInstance] timelineApi:self.api withCompletion:^(NSArray<TWTweet *> *tweets, NSError *error) {
         self.tweets = tweets;
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
