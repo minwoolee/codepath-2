@@ -71,24 +71,20 @@
 }
 
 - (IBAction)favorite:(id)sender {
-    [self.tweet toggleFavorithWithCompletion:^(NSDictionary *dictionary, NSError *error) {
-        if (!error) {
-            self.favoriteButton.selected = !self.favoriteButton.selected;
-        }
-    }];
+    if ([self.delegate respondsToSelector:@selector(handleFavorite:)]) {
+        [self.delegate handleFavorite:self.tweet];
+    }
 }
 
 - (IBAction)retweet:(id)sender {
-    [self.tweet toggleRetweetWithCompletion:^(NSDictionary *dictionary, NSError *error) {
-        if (!error) {
-            self.retweetButton.selected = !self.retweetButton.selected;
-        }
-    }];
+    if ([self.delegate respondsToSelector:@selector(handleRetweet:)]) {
+        [self.delegate handleRetweet:self.tweet];
+    }
 }
 
 - (IBAction)reply:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(handleReplyToTweetId:)]) {
-        [self.delegate handleReplyToTweetId:self.tweet.tweetId];
+    if ([self.delegate respondsToSelector:@selector(handleReplyToTweet:)]) {
+        [self.delegate handleReplyToTweet:self.tweet];
     }
 }
 

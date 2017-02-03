@@ -12,8 +12,10 @@
 
 @protocol TWTableCellActionDelegate <NSObject>
 
-- (void)handleReplyToTweetId:(NSString *)tweetId;
+- (void)handleReplyToTweet:(TWTweet *)tweet;
 - (void)handleProfileViewForUser:(TWUser *)user;
+- (void)handleRetweet:(TWTweet *)tweet;
+- (void)handleFavorite:(TWTweet *)tweet;
 
 @end
 

@@ -60,9 +60,12 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 {
-    // TODO: check URL to see if it's oauth URL
-    [[TWTwitterClient sharedInstance] handleApplicationOpenUrl:url];
-    return YES;
+    if ([url.host hasPrefix:@"oauth"]) {
+        [[TWTwitterClient sharedInstance] handleApplicationOpenUrl:url];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

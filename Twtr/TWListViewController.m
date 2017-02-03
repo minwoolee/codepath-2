@@ -109,37 +109,29 @@
     }];
 }
 
-//- (void)handleCompose:(id)sender;
-//{
-//    [self.navigationController pushViewController:[TWComposeViewController new] animated:YES];
-//}
-//
-//- (void)handleSignOut:(id)sender;
-//{
-//    UIAlertController *confirmSignOut = [UIAlertController alertControllerWithTitle:@"Sign out?"
-//                                                                            message:nil
-//                                                                     preferredStyle:UIAlertControllerStyleAlert];
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                     handler:^(UIAlertAction * action) {
-//                                                         [[TWNavigationManager sharedInstance] logOut];
-//                                                         [self presentViewController:[TWLoginViewController new] animated:YES completion:^{
-//                                                             //
-//                                                         }];
-//                                                     }];
-//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
-//                                                         handler:^(UIAlertAction * action) {
-//                                                             // do nothing
-//                                                         }];
-//    
-//    [confirmSignOut addAction:okAction];
-//    [confirmSignOut addAction:cancelAction];
-//    [self presentViewController:confirmSignOut animated:YES completion:nil];
-//}
+#pragma mark - TWTableCellActionDelegate methods
 
-#pragma mark - TWReplyHandlerDelegate method
-
-- (void)handleReplyToTweetId:(NSString *)tweetId;
+- (void)handleRetweet:(TWTweet *)tweet;
 {
+    [tweet toggleRetweetWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+        if (!error) {
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+- (void)handleFavorite:(TWTweet *)tweet;
+{
+    [tweet toggleFavorithWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+        if (!error) {
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+- (void)handleReplyToTweet:(TWTweet *)tweet;
+{
+    NSString *tweetId = tweet.tweetId;
     TWComposeViewController *composeViewController = [TWComposeViewController new];
     composeViewController.replyingToTweetId = tweetId;
     [self.navigationController pushViewController:composeViewController animated:YES];
