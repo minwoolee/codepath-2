@@ -85,6 +85,8 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
+#pragma mark - methods dealing with Timeline
+
 - (void)timelineApi:(NSString *)api withCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
 {
     [self GET:api parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -97,17 +99,8 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
-- (void)statusForId:(NSString *)statusId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
-{
-    [self GET:[NSString stringWithFormat:@"1.1/statuses/show/%@.json", statusId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        // show progress
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completion(responseObject, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"timelineWithCompletion failed with error: %@", error);
-        completion(nil, error);
-    }];
-}
+
+#pragma mark - methods dealing with Tweet object
 
 - (void)tweet:(NSString*)tweet withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
 {

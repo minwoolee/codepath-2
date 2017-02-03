@@ -20,8 +20,6 @@
 
 - (void)timelineApi:(NSString *)api withCompletion:(void (^)(NSArray<TWTweet *> *tweets, NSError *error))completion;
 
-- (void)statusForId:(NSString *)statusId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
-
 - (void)tweet:(NSString*)tweet withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
 - (void)tweet:(NSString*)tweet inReplyTo:(NSString*)replyingTweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
 
