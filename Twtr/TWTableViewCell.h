@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "TWTweet.h"
 
+@protocol TWReplyHandlerDelegate <NSObject>
+
+- (void)handleReplyToTweetId:(NSString *)tweetId;
+
+@end
+
 @interface TWTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) TWTweet *tweet;
+@property (strong, nonatomic) id<TWReplyHandlerDelegate> delegate;
 
 @end
+

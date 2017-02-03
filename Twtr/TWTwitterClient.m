@@ -111,7 +111,15 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
 
 - (void)tweet:(NSString*)tweet withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
 {
+    [self tweet:tweet inReplyTo:nil withCompletion:completion];
+}
+
+- (void)tweet:(NSString*)tweet inReplyTo:(NSString*)replyingTweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
     NSString *api = [NSString stringWithFormat:@"1.1/statuses/update.json?status=%@", [tweet stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+    if (replyingTweetId) {
+        api = [NSString stringWithFormat:@"%@&in_reply_to_status_id=%@", api, replyingTweetId];
+    }
     [self tweetActionWith:api withCompletion:completion];
 }
 

@@ -117,6 +117,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKR-pD-p27" userLabel="Reply">
                                 <rect key="frame" x="0.0" y="0.0" width="155" height="40"/>
                                 <state key="normal" title="Reply" image="reply-icon"/>
+                                <connections>
+                                    <action selector="reply:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H7U-R3-Ao3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tb-nz-jO6" userLabel="Retweet">
                                 <rect key="frame" x="155" y="0.0" width="155" height="40"/>

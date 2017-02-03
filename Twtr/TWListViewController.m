@@ -15,7 +15,7 @@
 #import "TWDetailViewController.h"
 #import "TWNavigationManager.h"
 
-@interface TWListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TWListViewController () <UITableViewDelegate, UITableViewDataSource, TWReplyHandlerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -87,6 +87,7 @@
 {
     TWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TWTableViewCell" forIndexPath:indexPath];
     cell.tweet = self.tweets[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -132,6 +133,15 @@
     [confirmSignOut addAction:okAction];
     [confirmSignOut addAction:cancelAction];
     [self presentViewController:confirmSignOut animated:YES completion:nil];
+}
+
+#pragma mark - TWReplyHandlerDelegate method
+
+- (void)handleReplyToTweetId:(NSString *)tweetId;
+{
+    TWComposeViewController *composeViewController = [TWComposeViewController new];
+    composeViewController.replyingToTweetId = tweetId;
+    [self.navigationController pushViewController:composeViewController animated:YES];
 }
 
 @end

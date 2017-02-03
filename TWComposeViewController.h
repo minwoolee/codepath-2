@@ -10,4 +10,7 @@
 
 @interface TWComposeViewController : UIViewController
 
+// TODO: need visual cue of replying action
+@property (nonatomic, strong) NSString *replyingToTweetId;
+
 @end

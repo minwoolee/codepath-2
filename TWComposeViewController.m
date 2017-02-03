@@ -62,7 +62,7 @@
 
 - (void)handleTweet:(id)sender;
 {
-    [[TWTwitterClient sharedInstance] tweet:self.tweetTextView.text withCompletion:^(NSDictionary *dictionary, NSError *error) {
+    [[TWTwitterClient sharedInstance] tweet:self.tweetTextView.text inReplyTo:self.replyingToTweetId withCompletion:^(NSDictionary *dictionary, NSError *error) {
         if (error) {
             NSLog(@"Tweet failed with error: %@", error);
         } else {

@@ -78,4 +78,10 @@
     }];
 }
 
+- (IBAction)reply:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(handleReplyToTweetId:)]) {
+        [self.delegate handleReplyToTweetId:self.tweet.tweetId];
+    }
+}
+
 @end
