@@ -31,6 +31,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    // Adding UIGestureRecognizer programmatically because "nib must contain exactly one top level object" error
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnProfileImage:)];
+    tap.cancelsTouchesInView = YES;
+    tap.numberOfTapsRequired = 1;
+    tap.delegate = self;
+    [self.profileImageView addGestureRecognizer:tap];
+    self.profileImageView.userInteractionEnabled = YES;
 }
 
 - (void)setTweet:(TWTweet *)tweet;
@@ -84,4 +92,11 @@
     }
 }
 
+- (void)tapOnProfileImage:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        if ([self.delegate respondsToSelector:@selector(handleProfileViewForUser:)]) {
+            [self.delegate handleProfileViewForUser:self.tweet.user];
+        }
+    }
+}
 @end

@@ -79,8 +79,8 @@
 		A092E6EC1E3FF264008D43DB /* TWLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWLoginViewController.h; path = Twtr/TWLoginViewController.h; sourceTree = "<group>"; };
 		A092E6ED1E3FF264008D43DB /* TWLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWLoginViewController.m; path = Twtr/TWLoginViewController.m; sourceTree = "<group>"; };
 		A092E6EE1E3FF264008D43DB /* TWLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWLoginViewController.xib; path = Twtr/TWLoginViewController.xib; sourceTree = "<group>"; };
-		A092E6F11E3FF3D3008D43DB /* TWTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWTwitterClient.h; path = Twtr/TWTwitterClient.h; sourceTree = "<group>"; };
-		A092E6F21E3FF3D3008D43DB /* TWTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWTwitterClient.m; path = Twtr/TWTwitterClient.m; sourceTree = "<group>"; };
+		A092E6F11E3FF3D3008D43DB /* TWTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTwitterClient.h; sourceTree = "<group>"; };
+		A092E6F21E3FF3D3008D43DB /* TWTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTwitterClient.m; sourceTree = "<group>"; };
 		A0C651B71E40064300679C97 /* Twtr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Twtr.entitlements; sourceTree = "<group>"; };
 		A0C651B81E40068E00679C97 /* TWUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWUser.h; path = /Users/mwlee/codepath/Twtr/Twtr/TWUser.h; sourceTree = "<absolute>"; };
 		A0C651B91E40068E00679C97 /* TWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWUser.m; path = Twtr/TWUser.m; sourceTree = "<group>"; };
@@ -177,6 +177,8 @@
 				A092E6AE1E3FBE22008D43DB /* AppDelegate.m */,
 				A0CD53F11E42B1CC00B19507 /* TWNavigationManager.h */,
 				A0CD53F21E42B1CC00B19507 /* TWNavigationManager.m */,
+				A092E6F11E3FF3D3008D43DB /* TWTwitterClient.h */,
+				A092E6F21E3FF3D3008D43DB /* TWTwitterClient.m */,
 				A092E6B61E3FBE22008D43DB /* Assets.xcassets */,
 				A092E6B81E3FBE22008D43DB /* LaunchScreen.storyboard */,
 				A092E6BB1E3FBE22008D43DB /* Info.plist */,
@@ -218,8 +220,6 @@
 				A0C651BC1E4006A200679C97 /* TWTweet.m */,
 				A0C651B81E40068E00679C97 /* TWUser.h */,
 				A0C651B91E40068E00679C97 /* TWUser.m */,
-				A092E6F11E3FF3D3008D43DB /* TWTwitterClient.h */,
-				A092E6F21E3FF3D3008D43DB /* TWTwitterClient.m */,
 			);
 			name = Model;
 			path = ..;
@@ -228,21 +228,21 @@
 		A0C651BF1E40660800679C97 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A0CD53F71E43C08E00B19507 /* TWProfileViewController.h */,
-				A0CD53F81E43C08E00B19507 /* TWProfileViewController.m */,
-				A0CD53F91E43C08E00B19507 /* TWProfileViewController.xib */,
-				A092E6E21E3FC3CC008D43DB /* TWListViewController.h */,
-				A092E6E31E3FC3CC008D43DB /* TWListViewController.m */,
-				A092E6E41E3FC3CC008D43DB /* TWListViewController.xib */,
-				A092E6EC1E3FF264008D43DB /* TWLoginViewController.h */,
-				A092E6ED1E3FF264008D43DB /* TWLoginViewController.m */,
-				A092E6EE1E3FF264008D43DB /* TWLoginViewController.xib */,
 				A0CD53A81E41669700B19507 /* TWComposeViewController.h */,
 				A0CD53A91E41669700B19507 /* TWComposeViewController.m */,
 				A0CD53AA1E41669700B19507 /* TWComposeViewController.xib */,
 				A0CD53EC1E428B5100B19507 /* TWDetailViewController.h */,
 				A0CD53ED1E428B5100B19507 /* TWDetailViewController.m */,
 				A0CD53EE1E428B5100B19507 /* TWDetailViewController.xib */,
+				A092E6E21E3FC3CC008D43DB /* TWListViewController.h */,
+				A092E6E31E3FC3CC008D43DB /* TWListViewController.m */,
+				A092E6E41E3FC3CC008D43DB /* TWListViewController.xib */,
+				A092E6EC1E3FF264008D43DB /* TWLoginViewController.h */,
+				A092E6ED1E3FF264008D43DB /* TWLoginViewController.m */,
+				A092E6EE1E3FF264008D43DB /* TWLoginViewController.xib */,
+				A0CD53F71E43C08E00B19507 /* TWProfileViewController.h */,
+				A0CD53F81E43C08E00B19507 /* TWProfileViewController.m */,
+				A0CD53F91E43C08E00B19507 /* TWProfileViewController.xib */,
 			);
 			name = Controller;
 			path = ..;

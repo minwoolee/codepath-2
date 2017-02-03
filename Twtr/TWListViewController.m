@@ -14,8 +14,9 @@
 #import "TWComposeViewController.h"
 #import "TWDetailViewController.h"
 #import "TWNavigationManager.h"
+#import "TWProfileViewController.h"
 
-@interface TWListViewController () <UITableViewDelegate, UITableViewDataSource, TWReplyHandlerDelegate>
+@interface TWListViewController () <UITableViewDelegate, UITableViewDataSource, TWTableCellActionDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -36,22 +37,22 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     // configure navigation bar
-    NSString *tabBarTitle = self.navigationController.tabBarItem.title;
-    self.navigationItem.title = tabBarTitle;
-    
-    if ([tabBarTitle isEqualToString:@"Timeline"]) {
-        UIBarButtonItem *newButton = [UIBarButtonItem new];
-        newButton.target = self;
-        newButton.action = @selector(handleCompose:);
-        newButton.title = @"New";
-        self.navigationItem.rightBarButtonItem = newButton;
-        
-        UIBarButtonItem *signOutButton = [UIBarButtonItem new];
-        signOutButton.target = self;
-        signOutButton.action = @selector(handleSignOut:);
-        signOutButton.title = @"Sign Out";
-        self.navigationItem.leftBarButtonItem = signOutButton;
-    }
+//    NSString *tabBarTitle = self.navigationController.tabBarItem.title;
+//    self.navigationItem.title = tabBarTitle;
+//    
+//    if ([tabBarTitle isEqualToString:@"Timeline"]) {
+//        UIBarButtonItem *newButton = [UIBarButtonItem new];
+//        newButton.target = self;
+//        newButton.action = @selector(handleCompose:);
+//        newButton.title = @"New";
+//        self.navigationItem.rightBarButtonItem = newButton;
+//        
+//        UIBarButtonItem *signOutButton = [UIBarButtonItem new];
+//        signOutButton.target = self;
+//        signOutButton.action = @selector(handleSignOut:);
+//        signOutButton.title = @"Sign Out";
+//        self.navigationItem.leftBarButtonItem = signOutButton;
+//    }
     
     UINib *cellNib = [UINib nibWithNibName:@"TWTableViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"TWTableViewCell"];
@@ -108,32 +109,32 @@
     }];
 }
 
-- (void)handleCompose:(id)sender;
-{
-    [self.navigationController pushViewController:[TWComposeViewController new] animated:YES];
-}
-
-- (void)handleSignOut:(id)sender;
-{
-    UIAlertController *confirmSignOut = [UIAlertController alertControllerWithTitle:@"Sign out?"
-                                                                            message:nil
-                                                                     preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * action) {
-                                                         [[TWNavigationManager sharedInstance] logOut];
-                                                         [self presentViewController:[TWLoginViewController new] animated:YES completion:^{
-                                                             //
-                                                         }];
-                                                     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction * action) {
-                                                             // do nothing
-                                                         }];
-    
-    [confirmSignOut addAction:okAction];
-    [confirmSignOut addAction:cancelAction];
-    [self presentViewController:confirmSignOut animated:YES completion:nil];
-}
+//- (void)handleCompose:(id)sender;
+//{
+//    [self.navigationController pushViewController:[TWComposeViewController new] animated:YES];
+//}
+//
+//- (void)handleSignOut:(id)sender;
+//{
+//    UIAlertController *confirmSignOut = [UIAlertController alertControllerWithTitle:@"Sign out?"
+//                                                                            message:nil
+//                                                                     preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                     handler:^(UIAlertAction * action) {
+//                                                         [[TWNavigationManager sharedInstance] logOut];
+//                                                         [self presentViewController:[TWLoginViewController new] animated:YES completion:^{
+//                                                             //
+//                                                         }];
+//                                                     }];
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+//                                                         handler:^(UIAlertAction * action) {
+//                                                             // do nothing
+//                                                         }];
+//    
+//    [confirmSignOut addAction:okAction];
+//    [confirmSignOut addAction:cancelAction];
+//    [self presentViewController:confirmSignOut animated:YES completion:nil];
+//}
 
 #pragma mark - TWReplyHandlerDelegate method
 
@@ -142,6 +143,13 @@
     TWComposeViewController *composeViewController = [TWComposeViewController new];
     composeViewController.replyingToTweetId = tweetId;
     [self.navigationController pushViewController:composeViewController animated:YES];
+}
+
+- (void)handleProfileViewForUser:(TWUser *)user;
+{
+    TWProfileViewController *profileViewController = [TWProfileViewController new];
+    profileViewController.user = user;
+    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 @end

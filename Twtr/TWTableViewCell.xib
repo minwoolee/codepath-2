@@ -138,6 +138,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="IsH-HM-NEP"/>
                         </constraints>
@@ -145,8 +146,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVI-Ri-9NZ" userLabel="image container">
                         <rect key="frame" x="0.0" y="25" width="68" height="320"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xje-Cw-J8d">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xje-Cw-J8d">
                                 <rect key="frame" x="12" y="8" width="44" height="44"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="dOf-Vt-V05"/>
                                     <constraint firstAttribute="width" constant="44" id="g8i-QO-BuR"/>
@@ -160,6 +162,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <gestureRecognizers/>
                 <constraints>
                     <constraint firstItem="fVI-Ri-9NZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="D8f-fM-Z9W"/>
                     <constraint firstItem="gxL-tF-ATK" firstAttribute="leading" secondItem="fVI-Ri-9NZ" secondAttribute="trailing" id="E9p-u9-UAD"/>
