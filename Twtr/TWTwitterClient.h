@@ -22,4 +22,10 @@
 
 - (void)statusForId:(NSString *)statusId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
 
+- (void)favoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)unfavoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+
+- (void)retweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+- (void)unretweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+
 @end

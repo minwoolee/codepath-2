@@ -134,10 +134,18 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3x7-NY-jnx" userLabel="Retweet">
                                     <rect key="frame" x="98.5" y="0.0" width="98" height="45"/>
                                     <state key="normal" title="Retweet" image="retweet-icon"/>
+                                    <state key="selected" image="retweet-icon-green"/>
+                                    <connections>
+                                        <action selector="retweet:" destination="-1" eventType="touchUpInside" id="bta-Sd-t2J"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtx-eO-8ZJ" userLabel="Favorite">
                                     <rect key="frame" x="196.5" y="0.0" width="98.5" height="45"/>
                                     <state key="normal" title="Favorite" image="favor-icon"/>
+                                    <state key="selected" image="favor-icon-red"/>
+                                    <connections>
+                                        <action selector="favorite:" destination="-1" eventType="touchUpInside" id="X14-5K-ZaH"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -225,7 +233,9 @@
     </objects>
     <resources>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="favor-icon-red" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
 </document>

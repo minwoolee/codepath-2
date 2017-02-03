@@ -64,6 +64,9 @@
         self.topContainerHeightConstraint.constant = 0;
         [self.view setNeedsUpdateConstraints];
     }
+    
+    self.favoriteButton.selected = self.tweet.favorited;
+    self.retweetButton.selected = self.tweet.retweeted;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +77,24 @@
 - (void)handleReply:(id)sender;
 {
     
+}
+
+- (IBAction)favorite:(id)sender {
+    [self.tweet toggleFavorithWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+        if (!error) {
+            self.favoriteButton.selected = !self.favoriteButton.selected;
+        }
+    }];
+}
+
+// TODO: if you favorite or reteet in detail screen then go back to list view
+// buttons don't reflect the latest state
+- (IBAction)retweet:(id)sender {
+    [self.tweet toggleRetweetWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+        if (!error) {
+            self.retweetButton.selected = !self.retweetButton.selected;
+        }
+    }];
 }
 
 @end

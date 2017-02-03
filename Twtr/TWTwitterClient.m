@@ -109,4 +109,38 @@ static NSString * const kTwitterBaseURL = @"https://api.twitter.com";
     }];
 }
 
+- (void)favoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
+    NSString *api = [NSString stringWithFormat:@"1.1/favorites/create.json?id=%@", tweetId];
+    [self tweetActionWith:api withCompletion:completion];
+}
+
+- (void)unfavoriteTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
+    NSString *api = [NSString stringWithFormat:@"1.1/favorites/destroy.json?id=%@", tweetId];
+    [self tweetActionWith:api withCompletion:completion];
+}
+
+- (void)retweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
+    NSString *api = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweetId];
+    [self tweetActionWith:api withCompletion:completion];
+}
+
+- (void)unretweetTweetWithId:(NSString *)tweetId withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
+    NSString *api = [NSString stringWithFormat:@"1.1/statuses/unretweet/%@.json", tweetId];
+    [self tweetActionWith:api withCompletion:completion];
+}
+
+- (void)tweetActionWith:(NSString *)api withCompletion:(void (^)(NSDictionary *dictionary, NSError *error))completion;
+{
+    [self POST:api parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Tweet action failed with error: %@", error);
+        completion(nil, error);
+    }];
+}
+
 @end

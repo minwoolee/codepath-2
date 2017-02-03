@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *retweetedByLabel;
 @property (weak, nonatomic) IBOutlet UIView *topContainerView;
 
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topContainerHeightConstraint;
 
 @end
@@ -52,12 +51,31 @@
     } else {
         self.retweetedByLabel.text = tweet.retweetedBy;
     }
+    
+    self.favoriteButton.selected = self.tweet.favorited;
+    self.retweetButton.selected = self.tweet.retweeted;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)favorite:(id)sender {
+    [self.tweet toggleFavorithWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+        if (!error) {
+            self.favoriteButton.selected = !self.favoriteButton.selected;
+        }
+    }];
+}
+
+- (IBAction)retweet:(id)sender {
+    [self.tweet toggleRetweetWithCompletion:^(NSDictionary *dictionary, NSError *error) {
+        if (!error) {
+            self.retweetButton.selected = !self.retweetButton.selected;
+        }
+    }];
 }
 
 @end
